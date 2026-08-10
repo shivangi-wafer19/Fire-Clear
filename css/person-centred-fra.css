@@ -1,0 +1,1219 @@
+/* =========================
+   SHARED STYLES
+========================= */
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 12px 18px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Primary Button (Blue) */
+.btn-primary {
+  background: var(--darkblue);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* Secondary Button (Outline Red) */
+.btn-secondary {
+  border: 2px solid var(--red);
+  background: var(--red);
+  color: var(--white);
+  padding: 10px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(226, 128, 128, 0.89);
+}
+
+/* Hover Effects */
+.btn-primary:hover {
+  border: 2px solid var(--darkblue);
+  background-color: transparent;
+  color: var(--darkblue) !important;
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  border: 2px solid var(--red);
+  background-color: transparent;
+  color: var(--red);
+}
+
+.icon {
+  width: 89px;
+  height: 81px;
+}
+
+/* SHARED ANIMATIONS (.animate-up/.animate-left/.animate-right/.show/.show-item)
+   are defined once in common.css, which every page loads before this file. */
+
+/* =========================
+   HERO TEXT SECTION
+========================= */
+
+.hero-text-section {
+  background: var(--background);
+  padding: 40px 0 60px 0;
+  text-align: center;
+
+  /* Subtle dotted background */
+  background-image: radial-gradient(#d6d9de 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Content */
+.hero-content {
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Label */
+
+/* =========================
+   HERO — SHARED BUTTON RESET
+   (unifies size/format of the two
+   hero CTAs; only color + hover
+   are allowed to differ)
+========================= */
+
+.hero-text .btn-group .btn {
+  box-sizing: border-box;
+  padding: 14px 20px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: none;
+}
+
+.hero-text .btn-group .btn-primary {
+  border-color: var(--darkblue);
+}
+
+.hero-text .btn-group .btn-secondary {
+  border-color: var(--red);
+}
+
+/* =========================
+   OVERVIEW SECTION
+========================= */
+
+.overview-section {
+  background: var(--white);
+  padding: 70px 0;
+}
+
+.overview-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.overview-content {
+  max-width: 700px;
+  text-align: center;
+}
+
+/* Center card */
+.center-card {
+  margin: 25px auto 0;
+  max-width: 500px;
+  background: var(--darkblue);
+  color: #fff;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.center-card p {
+  color: var(--white);
+}
+
+/* Card label */
+
+.circle-list {
+  margin-top: 20px;
+}
+
+.circle-list li {
+  position: relative;
+  margin-bottom: 8px;
+  text-align: left;
+  padding-left: 25%;
+  list-style: none;
+}
+
+.circle-list li::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  position: absolute;
+  left: 22%;
+  top: 6px;
+}
+
+/* =========================
+   WHEN PC-FRA IS REQUIRED
+========================= */
+
+.requirement-section {
+  padding: 60px 0 !important;
+  background: var(--background);
+}
+
+/* Three across, and it stays three across on tablets and laptops - the
+   cards get tighter padding instead of dropping onto a second row. */
+.requirement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.requirement-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px;
+  background: var(--white);
+  border: 1px solid #d8dee8;
+  border-left: 3px solid var(--red);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.requirement-card i {
+  color: var(--red);
+  font-size: 18px !important;
+  margin-top: 3px;
+}
+
+.requirement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   THE PROCESS SECTION
+========================= */
+
+.process-section {
+  padding: 60px 0 !important;
+  background: var(--white);
+}
+
+/* Two-up layout: the steps list on the left, the result card on the
+   right. This wrapper was never given a display value at all, which is
+   why the 48% widths below it did nothing and the two halves sat on
+   separate rows at every screen size. */
+.process-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+.process-content {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.process-heading {
+  margin-bottom: 30px;
+}
+
+.process-heading .section-title {
+  position: relative;
+  display: inline-block;
+}
+
+.process-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.process-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--white);
+  border: 1px solid #d8dee8;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.process-number {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--darkblue);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: 0.35s ease;
+}
+
+/* Hover */
+
+.process-item:hover {
+  transform: scale(1.03);
+  border-left: 3px solid var(--red);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+.process-item:hover .process-number {
+  background: var(--red);
+}
+
+/* =========================
+   RIGHT SIDE
+========================= */
+
+/* A zero basis with equal growth, rather than the locked 48% this used
+   to have: the two halves share the row exactly evenly at any width and
+   only stack at the phone breakpoint. Every other two-up block on this
+   page is built the same way. */
+.process-side {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Image */
+
+.process-image {
+  overflow: hidden;
+  border-radius: 6px;
+  margin-bottom: 18px;
+}
+
+.process-image img {
+  width: 100%;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.process-image:hover img {
+  transform: scale(1.08);
+}
+
+/* =========================
+   RESULT CARD
+========================= */
+
+/* The note card is the right-hand half of the process row, so it needs
+   the same flex rule as everything else here - without one it sized
+   itself to its own text and shoved the row onto two lines even on a
+   desktop. */
+.process-wrapper > .process-note {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.process-note {
+  background: #1e2d54;
+  color: var(--white);
+  border-radius: 6px;
+  padding: 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  position: relative;
+  top: 100px;
+}
+
+.note-content h4 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.note-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #d7dff0;
+}
+
+/* =========================
+   PROPORTIONATE RISK MANAGEMENT
+========================= */
+
+.risk-section {
+  padding: 60px 0;
+  background: var(--background);
+}
+
+.risk-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 50px;
+}
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+.risk-content {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.risk-heading {
+  margin-bottom: 25px;
+}
+
+/* Highlight Box */
+
+.risk-highlight {
+  border-left: 3px solid var(--red);
+  padding-left: 12px;
+  margin-bottom: 25px;
+}
+
+.risk-highlight p {
+  margin: 0;
+  color: var(--red);
+}
+
+/* Bullet List */
+
+.risk-list {
+  margin: 15px 0 0;
+  padding-left: 18px;
+}
+
+.risk-list li {
+  margin-bottom: 12px;
+  color: #344054;
+}
+
+.risk-list li::marker {
+  color: var(--red);
+}
+
+/* =========================
+   RIGHT PANEL
+========================= */
+
+.recommendation-panel {
+  flex: 1 1 0;
+  min-width: 0;
+  border: 1px solid #d9dee8;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.recommendation-title {
+  background: var(--darkblue);
+  color: #fff;
+  padding: 18px;
+}
+
+.recommendation-title h4 {
+  color: var(--white);
+}
+
+.recommendation-list {
+  background: #fff;
+}
+
+.recommendation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+  border-top: 1px solid #d9dee8;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.recommendation-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.recommendation-left i {
+  width: 20px;
+  color: var(--red);
+  transition: 0.3s;
+}
+
+.recommendation-left span {
+  color: #24324a;
+}
+
+.recommendation-icon {
+  color: #9aa6b5;
+  font-size: 12px;
+  transition: 0.3s;
+}
+
+/* =========================
+   PIANO / STAIR EFFECT
+========================= */
+
+.recommendation-item:hover {
+  transform: translateX(10px) scale(1.02);
+  background: #f7f9fc;
+  box-shadow: -6px 8px 18px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+  position: relative;
+}
+
+.recommendation-item:hover .recommendation-left i {
+  color: var(--blue);
+}
+
+.recommendation-item:hover .recommendation-icon {
+  transform: rotate(90deg);
+  color: var(--red);
+}
+
+/* Stair Effect */
+
+.recommendation-item:hover + .recommendation-item {
+  transform: translateX(5px);
+}
+
+.recommendation-list:hover .recommendation-item:not(:hover) {
+  opacity: 0.92;
+}
+
+/* =========================
+   GOVERNANCE SECTION
+========================= */
+
+.governance-section {
+  padding: 60px 0 !important;
+  background: #1f2946;
+}
+
+.governance-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 45px;
+}
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+.governance-content {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.governance-content .section-title {
+  color: var(--white);
+  margin-bottom: 22px;
+}
+
+/* =========================
+   QUOTE CARD
+========================= */
+
+.governance-quote {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: 0.35s ease;
+}
+
+.governance-quote:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-4px);
+}
+
+.quote-icon {
+  color: var(--red);
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.quote-text p {
+  margin: 0;
+  color: #fff;
+}
+
+/* =========================
+   RIGHT PANEL
+========================= */
+
+.governance-list {
+  flex: 1 1 0;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.governance-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Letter Box */
+
+.governance-letter {
+  width: 24px;
+  height: 24px;
+  background: var(--red);
+  color: #fff;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: 0.25s;
+}
+
+/* Text */
+
+.governance-info {
+  flex: 1;
+}
+
+.governance-info h4 {
+  margin: 0 0 4px;
+  color: #fff;
+}
+
+.governance-info p {
+  margin: 0;
+  color: #aab7d8;
+}
+
+/* =========================
+   HOVER EFFECT
+========================= */
+
+/* Hovered card */
+
+.governance-item:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* Blue letter on hover */
+
+.governance-item:hover .governance-letter {
+  background: var(--blue);
+}
+
+/* Stair Effect */
+
+.governance-item:hover + .governance-item {
+  transform: translateY(-3px);
+}
+
+/* Smooth feeling */
+
+.governance-list:hover .governance-item:not(:hover) {
+  opacity: 0.95;
+}
+
+/* =========================
+   LIST HOVER EFFECT
+========================= */
+
+.governance-item {
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Hovered Card */
+
+.governance-item:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+/* Letter */
+
+.governance-item:hover .governance-letter {
+  background: var(--blue);
+}
+
+/* Text */
+
+.governance-item:hover .governance-info h4 {
+  color: #fff;
+}
+
+.governance-item:hover .governance-info p {
+  color: #d9e3ff;
+}
+
+/* =========================
+   TRAINING & INTERNAL CAPABILITY
+========================= */
+
+.training-section {
+  padding: 60px 0 !important;
+  background: var(--background);
+}
+
+.training-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+.training-content {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 540px;
+}
+
+.training-content .section-title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 22px;
+  margin-top: 0;
+}
+
+.training-content .section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 55px;
+  height: 3px;
+  background: var(--red);
+}
+
+.training-content .red-btn {
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.training-content .red-btn:hover {
+  background: var(--darkblue);
+  transform: translateY(-3px);
+}
+
+.training-card-header h3 {
+  margin: 0;
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+
+.training-card-header p {
+  margin-bottom: 0;
+}
+
+training-card-header .icon {
+  width: 89px;
+  height: 81px;
+}
+
+/* =========================
+   TRAINING LIST
+========================= */
+
+.training-section {
+  padding: 60px 0 !important;
+  background: var(--white);
+  border-bottom: 1px solid #d9e2ef;
+}
+
+.training-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.training-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 22px;
+  border-top: 1px solid #e6ebf2;
+  transition: background 0.3s ease;
+}
+
+.training-list li:hover {
+  background: #f8f9fc;
+}
+
+.training-list li i {
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+/* =========================
+   INTEGRATION WITH FIRE SAFETY MANAGEMENT
+========================= */
+
+.integration-section {
+  padding: 60px 0 !important;
+  background: var(--white);
+}
+
+/* Heading */
+
+.integration-heading {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.integration-heading .section-title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.integration-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.integration-image img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* Image Zoom */
+
+.integration-image:hover img {
+  transform: scale(1.08);
+}
+
+/* Overlay */
+
+.image-overlay h4 {
+  margin: 0 0 8px;
+  color: var(--white);
+  font-size: 16px;
+}
+
+.image-overlay p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================
+   RIGHT LIST
+========================= */
+
+.integration-list {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.integration-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 17px 18px;
+
+  background: var(--white);
+
+  border: 1px solid #dbe2eb;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.integration-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.integration-left i {
+  color: var(--red);
+  width: 20px !important;
+}
+
+.integration-left span {
+  color: #25344d;
+}
+
+.integration-icon {
+  color: var(--red);
+  font-size: 11px;
+}
+
+/* =========================
+   SHARED PIANO / STAIR EFFECT
+========================= */
+
+/* Reusing animation classes */
+
+.shared-lift-item {
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease,
+    background 0.28s ease;
+}
+
+.shared-lift-item:hover {
+  transform: translateY(-6px);
+
+  background: #fafbfd;
+
+  border-color: #ccd7e8;
+
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.shared-lift-item:hover .integration-left i {
+  color: var(--blue);
+}
+
+.shared-lift-item:hover .integration-icon {
+  color: var(--blue);
+}
+
+/* =========================
+   CONTACT CTA
+========================= */
+
+.discussion-section {
+  padding: 60px 0;
+  background: var(--background);
+}
+
+.discussion-content {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+
+.discussion-content .tag-label {
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.discussion-content .section-subtitle {
+  max-width: 620px;
+  margin: 0 auto 30px;
+  line-height: 1.8;
+}
+
+/* Buttons */
+
+.discussion-content .btn-group {
+  justify-content: center;
+}
+
+.discussion-content .btn {
+  transition: all 0.3s ease;
+}
+
+.discussion-content .red-btn:hover {
+  background: var(--darkblue);
+  transform: translateY(-3px);
+}
+/* ==========================================================================
+   RESPONSIVE LAYERS
+
+   Every two-up section on this page (process, risk, governance,
+   training, integration) is a flex row of two zero-basis halves, and
+   the requirement cards are a three-column grid. All of them keep
+   their columns on tablets and laptops; the switch to a single
+   column happens once, at 767px.
+   ========================================================================== */
+
+/* ==========================================================================
+    LAPTOP / LARGE TABLET -- max-width: 1024px
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-text-section,
+  .overview-section,
+  .requirement-section,
+  .process-section,
+  .risk-section,
+  .governance-section,
+  .training-section,
+  .integration-section,
+  .discussion-section {
+    padding: 55px 0 !important;
+  }
+
+  .process-wrapper,
+  .risk-wrapper,
+  .governance-wrapper,
+  .integration-wrapper,
+  .training-wrapper {
+    gap: 28px;
+  }
+
+  /* the cards themselves get tighter so three still fit on one row */
+  .requirement-card,
+  .process-item,
+  .governance-item,
+  .integration-item,
+  .recommendation-item {
+    padding: 14px;
+  }
+
+  .training-list li {
+    padding: 14px 16px;
+  }
+
+  .process-heading,
+  .risk-heading {
+    margin-bottom: 20px;
+  }
+
+  .integration-heading {
+    margin-bottom: 35px;
+  }
+}
+
+/* ==========================================================================
+   -- max-width: 900px, same columns, tighter again
+   ========================================================================== */
+@media (max-width: 900px) {
+  .requirement-grid {
+    gap: 10px;
+  }
+
+  .requirement-card,
+  .process-item,
+  .governance-item,
+  .integration-item,
+  .recommendation-item {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .process-number,
+  .governance-letter {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+
+  .process-section,
+  .governance-section {
+    padding: 45px 0 !important;
+  }
+
+  /* every two-up section becomes one full-width column */
+  .process-wrapper,
+  .governance-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 26px;
+  }
+
+  .process-note {
+    padding: 18px;
+    top: 24px;
+  }
+}
+
+/* ==========================================================================
+   PHONES -- max-width: 767px
+   ========================================================================== */
+@media (max-width: 767px) {
+  .circle-list li {
+    padding-left: 13%;
+  }
+
+  .circle-list li::before {
+    left: 8%;
+  }
+
+  .hero-text-section,
+  .overview-section,
+  .requirement-section,
+  .process-section,
+  .risk-section,
+  .governance-section,
+  .training-section,
+  .integration-section,
+  .discussion-section {
+    padding: 45px 0 !important;
+  }
+
+  /* every two-up section becomes one full-width column */
+  .process-wrapper,
+  .risk-wrapper,
+  .governance-wrapper,
+  .integration-wrapper,
+  .training-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 26px;
+  }
+
+  /* "When PC-FRA Is Required" drops to a single column too */
+  .requirement-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .training-content {
+    max-width: 100%;
+  }
+
+  /* the result card is nudged 39px down to overlap the photo on desktop;
+     once the column is full width it just sits under it normally */
+  .process-note {
+    top: 0;
+    margin-top: 4px;
+  }
+
+  /* full-width tap targets */
+  .btn-group,
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-group .btn,
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* the lift-on-hover effects are pointless on touch and leave cards
+     stuck in their hovered state after a tap */
+  .process-item:hover,
+  .requirement-card:hover,
+  .governance-item:hover,
+  .recommendation-item:hover,
+  .integration-item:hover {
+    transform: none;
+  }
+
+  .requirement-card,
+  .process-item,
+  .governance-item,
+  .integration-item,
+  .recommendation-item {
+    padding: 14px 16px;
+  }
+
+  .center-card,
+  .recommendation-panel {
+    max-width: 100%;
+  }
+
+  .center-card {
+    padding: 18px;
+  }
+}
+
+/* ==========================================================================
+   SMALL MOBILE -- max-width: 425px
+   ========================================================================== */
+@media (max-width: 425px) {
+  .training-list li {
+    padding: 14px 10px;
+  }
+
+  /* these rows put their trailing "+" icon on its own line rather than
+     squeezing the label */
+  .governance-item,
+  .integration-item,
+  .recommendation-item {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .recommendation-icon,
+  .integration-icon {
+    align-self: flex-end;
+  }
+
+  .hero-text-section,
+  .overview-section,
+  .requirement-section,
+  .process-section,
+  .risk-section,
+  .governance-section,
+  .training-section,
+  .integration-section,
+  .discussion-section {
+    padding: 38px 0 !important;
+  }
+}

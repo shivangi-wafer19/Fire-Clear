@@ -1,0 +1,793 @@
+:root {
+  --red: #e0110f;
+  --blue: #2f5bd3;
+  --darkblue: #082880;
+  --white: #ffffff;
+  --background: #f5f6f8;
+  --text-color: #5b6575; /* darkened from rgb(113 124 140) to meet WCAG AA (4.5:1) body text contrast */
+  --black: #000000;
+}
+
+body {
+  margin: 0;
+  padding-top: 75px; /* clears the fixed .site-header sitewide, so no page needs its own hero padding hack for this */
+  font-family: "Noto Sans", sans-serif;
+  color: var(--text-color);
+}
+
+html {
+  scroll-padding-top: 90px; /* keeps in-page anchor links from landing underneath the fixed header */
+}
+
+/* Sections slide in from the left or right as you scroll, which means
+   that until a section has appeared it is sitting 40px outside the page.
+   Clipping the horizontal axis here throws that away at source, so the
+   page can never be dragged sideways. clip (not hidden) is deliberate:
+   it leaves the vertical axis alone, so the BAFE badge can still hang
+   off the bottom of the hero photo the way it is meant to. */
+main {
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Noto Serif", serif;
+  font-weight: bold;
+}
+
+/* One container for the whole site.
+
+   It is 100% wide so the page always fills the device, and the padding
+   (not a percentage width) is what keeps text off the screen edge. That
+   way a phone gets the full screen minus a thumb-friendly gutter, while
+   a desktop still tops out at the 1200px reading width. */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+/* =========================
+   SHARED ANIMATIONS
+========================= */
+
+.show-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-up,
+.animate-left,
+.animate-right {
+  opacity: 0;
+  transition: 0.8s ease;
+}
+
+.animate-up {
+  transform: translateY(40px);
+}
+
+.animate-left {
+  transform: translateX(-40px);
+}
+
+.animate-right {
+  transform: translateX(40px);
+}
+
+.show {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/*==========================================
+       Banner Background
+===========================================*/
+
+/* hero background color */
+
+.hero-background {
+  position: relative;
+  background: #f5f6f8;
+  padding: 60px 0;
+  overflow: visible;
+  z-index: 0; /* change from -2 */
+}
+
+/* dotted background effect */
+
+.hero-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#d5dced 1px, transparent 1px);
+  background-size: 18px 18px;
+  opacity: 0.8;
+  z-index: 0;
+  pointer-events: none; /* IMPORTANT */
+}
+
+/* Diagonal second color */
+
+.hero-background::after {
+  content: "";
+  position: absolute;
+  bottom: -38px;
+  right: 0;
+  top: 0;
+  width: 25%;
+  max-width: 100%;
+  background: #e9ebef8a; /* second color */
+  clip-path: polygon(
+    30% 0,
+    100% 0,
+    100% 100%,
+    0% 100%
+  ); /* create diagonal shape */
+  z-index: 0;
+  pointer-events: none; /* IMPORTANT */
+}
+
+/* =====================
+   Hero Image Slider
+=========================*/
+/* The hero is one row with two halves: copy on the left, media on the
+   right. A zero flex-basis with equal growth splits the row exactly
+   50/50 whatever the content is, and - unlike a basis in pixels - it can
+   never get big enough to push a half onto its own line by accident.
+   min-width: 0 lets the text wrap instead of widening the row. */
+.hero-section > div:first-child,
+.hero-image,
+.hero-section > .process-side {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.hero-image {
+  position: relative;
+}
+
+/* The slider used to be a fixed 700x485 box, which is what broke every
+   screen narrower than that. It is now fluid and holds the original
+   shape through aspect-ratio instead of a hard height. */
+.image-slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 700 / 485;
+  border-radius: 3%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.image-slider .slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.08);
+  transition:
+    opacity 1.2s ease,
+    transform 6s ease;
+}
+
+.image-slider .slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.image-slider .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--white);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.slider-dot.active {
+  background: var(--white);
+  box-shadow: 0 0 0 2px var(--red);
+}
+
+/* Visible focus ring for keyboard users across all interactive controls */
+a:focus-visible,
+button:focus-visible,
+.slider-dot:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--darkblue);
+  outline-offset: 2px;
+}
+
+/* Image */
+
+.process-image {
+  overflow: hidden;
+  border-radius: 6px;
+  margin-bottom: 18px;
+}
+
+.process-image img {
+  width: 100%; /* was a hard 683px, which overflowed on tablets and phones */
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.process-image:hover img {
+  transform: scale(1.08);
+}
+
+/*====================================
+      Tittle 
+====================================*/
+
+.hero-section {
+  display: flex;
+  flex-wrap: wrap; /* the halves drop onto their own rows once they run out of room */
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/*================
+   h1
+================*/
+
+.hero-title {
+  font-size: 48px;
+  line-height: 48px;
+  color: var(--black);
+  padding-right: 73px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+
+/*================
+   h2
+================*/
+
+.section-title {
+  font-size: 36px;
+  line-height: 40px;
+  color: var(--red);
+  margin: 0;
+}
+
+/*================
+   h3
+================*/
+
+.subsection-title {
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--black);
+  margin: 0;
+  text-align: left;
+}
+
+/*================
+   h4
+================*/
+
+.small-section-title {
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--black);
+  margin: 0;
+}
+
+/*====================================
+      Description 
+====================================*/
+
+.hero-description {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  color: var(--text-color);
+  padding-right: 60px;
+}
+
+.body-description {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  margin: 20px 0px;
+  color: var(--text-color);
+}
+
+.lead-body-description {
+  font-size: 20px;
+  line-height: 28px !important;
+  font-weight: 700;
+}
+
+.small-text {
+  font-size: 14px;
+  line-height: 20px !important;
+  font-weight: 400;
+  margin: 0;
+}
+
+.accent-text {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 800;
+  margin: 0;
+}
+
+alt {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.caption {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--darkblue);
+}
+
+/* Label */
+.label {
+  color: var(--darkblue) !important;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.certified-quality {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  /* Default badge position, shared by every page that uses this hero
+     pattern. Anchoring it to the right edge (instead of the old
+     left: 64% / width: 37% pair) means it hugs the bottom-right corner
+     of the photo at every screen size and can never stick out past it
+     and cause sideways scrolling. */
+  bottom: -44px;
+  right: 0;
+  width: max-content;
+  max-width: 80%;
+  padding: 25px 22px;
+}
+
+.badge {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--black);
+  margin: 0;
+}
+
+.overline {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: var(--text-color);
+  padding-right: 10px;
+}
+
+.check-icon {
+  background-color: var(--background) !important;
+  color: var(--darkblue);
+  padding: 15px;
+  border-radius: 50% !important;
+}
+
+/*====================
+   Icons  
+====================*/
+
+.icon {
+  width: 89px;
+  height: 81px;
+}
+
+/* No image is ever allowed to be wider than the box it sits in - this is
+   the single rule that stops photos from forcing a horizontal scrollbar. */
+img {
+  max-width: 100%;
+}
+
+/*================================
+      Buttons
+================================*/
+
+/* Both hero button rows behave the same way: sit side by side while there
+   is room, wrap onto a second line when there isn't. */
+.button-section,
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+/* the gap above already does the spacing, so drop the button's own margin */
+.button-section .btn-primary,
+.hero-buttons .btn-primary {
+  margin-right: 0;
+}
+
+/* Button */
+.btn-primary {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  background: var(--darkblue);
+  color: var(--white);
+  padding: 11px 20px;
+  margin-right: 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* Hover Effects */
+.btn-primary:hover {
+  border: 1px solid var(--darkblue);
+  background-color: transparent;
+  color: var(--darkblue) !important;
+}
+
+/* Secondary Button (Outline Red) */
+.btn-secondary {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  border: 1px solid #cececf;
+  background: var(--white);
+  color: var(--text-color);
+  padding: 11px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  border: 1px solid var(--black) !important;
+  color: var(--black) !important;
+}
+
+.learn-btn {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #2c3444;
+  border: 1px solid #d8dde6;
+  border-radius: 8px;
+  padding: 14px;
+  transition: 0.3s;
+}
+
+.learn-btn:hover {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+}
+
+.btn-cta {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  background: var(--darkblue);
+  color: var(--white);
+  padding: 11px 20px;
+  margin-right: 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* Hover Effects */
+.btn-cta:hover {
+  border: 1px solid var(--darkblue);
+  background-color: transparent;
+  color: var(--darkblue) !important;
+}
+/* ============================================================
+   RESPONSIVE LAYERS
+
+   The whole site works off one rule:
+
+     1025px and up  desktop - full layout
+     768px - 1024px tablet and small laptop - SAME number of columns
+                    as desktop, just with tighter padding, gaps and
+                    type so everything still fits on one line
+     767px and down phones - every multi-column block becomes a
+                    single full-width column
+
+   Nothing is allowed to wrap onto a second row between 768px and
+   1024px; that is the whole point of the middle step.
+   ============================================================ */
+
+/* ============================================================
+   1024px and below - tablet / small laptop
+   ============================================================ */
+@media (max-width: 1024px) {
+  .hero-background {
+    padding: 50px 0;
+  }
+
+  .hero-section {
+    gap: 30px;
+  }
+
+  /* the right-hand padding on the copy was tuned for a 1200px hero and
+     just eats space once the columns get narrower */
+  .hero-title {
+    font-size: 34px;
+    line-height: 40px;
+    padding-right: 0;
+  }
+
+  .hero-description {
+    font-size: 16px;
+    line-height: 24px;
+    padding-right: 0;
+  }
+
+  .section-title {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .subsection-title {
+    font-size: 21px;
+    line-height: 29px;
+  }
+
+  .small-section-title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .lead-body-description {
+    font-size: 18px;
+  }
+
+  .icon {
+    width: 72px;
+    height: 66px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .btn-cta {
+    padding: 11px 18px;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  /* badge shrinks with the photo it sits on */
+  .certified-quality {
+    bottom: -30px;
+    padding: 16px 14px;
+  }
+
+  .check-icon {
+    padding: 10px;
+  }
+
+  .badge {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .overline {
+    font-size: 10px;
+    line-height: 14px;
+  }
+}
+
+/* ============================================================
+   900px and below - still one line, but the type has to come
+   down another step for it to stay comfortable
+   ============================================================ */
+@media (max-width: 900px) {
+  .hero-title {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+    line-height: 23px;
+  }
+
+  .section-title {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .subsection-title {
+    font-size: 19px;
+    line-height: 27px;
+  }
+
+  .small-section-title {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .body-description {
+    font-size: 15px;
+    line-height: 23px;
+  }
+
+  .lead-body-description {
+    font-size: 16px;
+  }
+
+  .icon {
+    width: 60px;
+    height: 55px;
+  }
+}
+
+/* ============================================================
+   767px and below - phones
+   ============================================================ */
+@media (max-width: 767px) {
+  /* The hero splits into two rows here and nowhere earlier: copy
+     first, photo underneath, both the full width of the screen. */
+  .hero-section > div:first-child,
+  .hero-image,
+  .hero-section > .process-side {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .hero-section {
+    gap: 32px;
+  }
+
+  .hero-background {
+    padding: 40px 0;
+  }
+
+  h1,
+  .hero-title {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  h2,
+  .section-title {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .subsection-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .small-section-title {
+    font-size: 17px;
+    line-height: 25px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+    line-height: 23px;
+    margin-bottom: 0;
+  }
+
+  .icon {
+    width: 64px;
+    height: 58px;
+  }
+
+  /* the photo is full width now, so the badge has room again */
+  .certified-quality {
+    bottom: -26px;
+    right: 16px;
+  }
+
+  /* Buttons go full width and stack - a phone-sized tap target beats a
+     pair of half-width buttons squeezed side by side. */
+  .button-section,
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button-section .btn-primary,
+  .button-section .btn-secondary,
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .btn-cta,
+  .fra {
+    padding: 11px 18px;
+    margin-right: 0;
+    text-align: center;
+  }
+}
+
+/* ============================================================
+   425px and below - small phones
+   ============================================================ */
+@media (max-width: 425px) {
+  .container {
+    padding-inline: 16px;
+  }
+
+  .hero-title {
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .section-title {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .hero-description,
+  .small-text {
+    font-size: 14px;
+  }
+
+  .subsection-title {
+    font-size: 19px;
+    line-height: 27px;
+  }
+
+  .icon {
+    width: 56px;
+    height: 51px;
+  }
+
+  /* at this width the badge overlaps too much of the photo to be
+     readable, so it sits fully inside the bottom-right corner */
+  .certified-quality {
+    bottom: 12px;
+    right: 12px;
+    padding: 12px 12px;
+  }
+}

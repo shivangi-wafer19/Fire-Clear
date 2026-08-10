@@ -1,0 +1,426 @@
+/* :root design tokens (--red, --blue, --darkblue, --white, --background,
+   --text-color, --black) are defined once in common.css, which every page
+   also loads. Redefining them here was incomplete (missing --black) and
+   self-referential (--text-color: var(--text-color) is circular and does
+   nothing), so the duplicate block has been removed. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* The scroll-in animations start their elements 40px to the left or right
+   of where they end up. Until a section has been scrolled into view that
+   offset makes the page wider than the screen, which is what produced the
+   sideways scrollbar. Clipping on both html and body kills it for good -
+   it has to be on both, because when only html carries it the rule is
+   handed back to the viewport and body can still push past the edge. */
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans", sans-serif !important;
+  color: var(--text-color);
+}
+
+/* Container
+
+   Matches the .container in common.css - full device width with a fixed
+   side gutter - and adds the vertical rhythm every section relies on.
+   The side padding is deliberately left to common.css so there is only
+   one place to change it. */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding-block: 30px;
+  margin-inline: auto;
+}
+
+/* 
+------------------
+HEADER
+------------------
+ */
+
+/* Pinned to both edges rather than given width: 100%. On a phone the
+   percentage was measured against a slightly wider box than the screen,
+   which pushed the hamburger button off the right-hand side. */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 25px 0;
+}
+
+/* Logo */
+.logo {
+  font-family:
+    "Noto Sans", sans-serif; /* Glacial Indifference is not available via Google Fonts - using Noto Sans as the closest loaded substitute until a licensed font file is added */
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--black);
+  font-size: 20px;
+}
+
+/* Nav */
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.nav-list a:hover {
+  color: #e0110f;
+}
+
+/* Current page indicator — class is added by JS in main.js */
+.nav-list a.nav-link.active {
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  border-bottom: 2px solid var(--red);
+}
+
+/* Button */
+.btn-nav {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  background: var(--darkblue);
+  color: var(--white) !important;
+  padding: 13px 14px;
+  margin-right: 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* Hover Effects */
+.btn-nav:hover {
+  border: 1px solid var(--darkblue);
+  background-color: transparent;
+  color: var(--darkblue) !important;
+}
+
+/* 
+------------------
+FOOTER
+------------------
+ */
+
+.site-footer {
+  background: rgb(255 255 255);
+  padding: 0px;
+}
+
+/* Four equal columns, held at four on tablets and laptops as well.
+   A grid rather than a flex row so every column is exactly the same
+   width, which is what makes the headings line up. */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.footer-col h3 {
+  margin: 0px 0px 22px;
+}
+
+.accent-text {
+  color: var(--black) !important;
+}
+
+.footer-col p {
+  color: var(--text-color);
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col li {
+  line-height: 40px;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.contact-list i {
+  margin-left: -28px !important;
+  color: var(--darkblue);
+}
+
+.footer-bottom {
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--black);
+}
+
+.share-icon {
+  display: flex;
+  margin: 20px 18px !important;
+  text-align: center;
+  gap: 10px;
+}
+
+.icons {
+  background-color: var(--background);
+  border-radius: 50%;
+  padding: 15px;
+}
+
+.icon-container {
+  padding: 0px 0px !important;
+}
+
+.footer-Policy {
+  padding-top: 15px !important;
+}
+
+.footer-Policy a {
+  text-decoration: none;
+  color: var(--black);
+  margin-right: 10px !important;
+  margin-top: 10px;
+}
+
+/* ============================================================
+   TABLET / LAPTOP  (max-width: 1024px)
+   Still four footer columns - only the gutter and the bottom
+   bar change.
+============================================================ */
+@media (max-width: 1024px) {
+  .footer-container {
+    gap: 20px;
+  }
+
+  .footer-col li {
+    line-height: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .icon-container {
+    padding: 0px 0px !important;
+  }
+}
+
+/* ============================================================
+   PHONES  (max-width: 767px)
+   One footer column per row, centred.
+============================================================ */
+@media (max-width: 767px) {
+  .site-header {
+    padding: 10px 0;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-col {
+    text-align: center;
+  }
+
+  /* the contact list pulls its icons left to line them up with the text;
+     that hangs off the edge once the column is centred */
+  .contact-list i {
+    margin-left: 0 !important;
+  }
+
+  .footer-col ul {
+    padding: 0;
+    margin-top: 15px;
+  }
+
+  .footer-col li {
+    line-height: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .icons {
+    margin: 5px;
+  }
+
+  .footer-Policy {
+    padding-top: 0 !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .share-icon {
+    justify-content: center;
+  }
+
+  .footer-bottom p {
+    font-size: 12px !important;
+  }
+
+  .footer-Policy {
+    font-size: 12px !important;
+  }
+}
+
+/* ==========================================
+   HAMBURGER MENU
+========================================== */
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1001;
+  /* reset default <button> chrome now that this is a real button element */
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.menu-toggle span {
+  width: 26px;
+  height: 3px;
+  background: var(--darkblue);
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* Hamburger Animation */
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+/* ==================================================
+   TABLET (1024px and below)
+   Switches from full nav to hamburger + dropdown
+================================================== */
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 15px 0;
+  }
+
+  /* show hamburger, hide the inline desktop nav */
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    z-index: 999;
+  }
+
+  .nav-list {
+    display: none; /* hidden until .active is toggled by JS */
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    gap: 0;
+  }
+
+  .nav-list.active {
+    display: flex;
+  }
+
+  .nav-list li {
+    border-bottom: 1px solid #eee;
+  }
+
+  .nav-list a {
+    display: block;
+    padding: 18px; /* comfortable tap target */
+    font-size: 14px;
+  }
+
+  /* the "Book a call" item in the dropdown reads as a full-width row
+     rather than a floating pill. Scoped to .nav-list on purpose - the
+     unscoped .btn-primary rule that used to live here was also hitting
+     the hero buttons on every page. */
+  .nav-list .btn-nav {
+    display: block;
+    margin: 0;
+    border-radius: 0;
+    text-align: center;
+  }
+}
+
+/* ==================================================
+   MOBILE (640px and below)
+================================================== */
+@media (max-width: 640px) {
+  body {
+    padding-top: 75px;
+  }
+
+  .logo img {
+    width: 145px;
+  }
+
+  .nav-list a {
+    padding: 20px; /* bigger tap target for touch */
+    font-size: 17px;
+  }
+}

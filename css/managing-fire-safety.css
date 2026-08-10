@@ -1,0 +1,431 @@
+/* .certified-quality base positioning now lives in common.css */
+
+/* The hero photo on this page clips its overflow so the zoom-on-hover
+   stays inside the rounded corners - but that also clipped the BAFE
+   badge, which is meant to hang off the bottom edge. Only the hero copy
+   of .process-image opts out. */
+.hero-section .process-image {
+  overflow: visible;
+}
+
+/* =========================
+   INTRO SECTION
+========================= */
+
+.intro-section {
+  background: var(--white);
+  padding: 70px 0;
+}
+
+.intro-item i {
+  color: var(--red);
+  font-size: 23px;
+  margin-right: 8px;
+}
+
+/* Layout - two equal columns, side by side on desktop and tablet */
+.intro-wrapper {
+  display: flex;
+  gap: 40px;
+}
+
+/* Columns - a zero basis with equal growth keeps them exactly half and
+   half and stops either one wrapping onto its own row */
+.intro-left,
+.intro-right {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* List */
+.intro-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Item */
+.intro-item {
+  background: var(--background);
+  padding: 14px 16px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #d8dce5;
+}
+
+/* =========================
+   PRINCIPLE DETAIL
+========================= */
+
+/* Image Box - behaves exactly like .pblock-media */
+.principle-image-box {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.principle-image-box img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Right Content */
+.principle-text-box {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Small Label */
+
+/* Heading */
+
+/* Paragraph */
+
+.principle-list i {
+  color: var(--darkblue);
+  margin-right: 10px;
+}
+
+.principle-list li {
+  margin-bottom: 8px;
+  color: var(--black);
+  padding: 0px;
+}
+
+/* =========================
+   PRINCIPLE 02 STYLING
+========================= */
+
+/* Blocks */
+.competence-block {
+  margin-bottom: 20px;
+}
+
+/* Circle List (Red) */
+.circle-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.circle-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+
+.circle-list li::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+
+/* Check List (Blue) */
+.check-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.check-list li::before {
+  content: "✔";
+  color: var(--blue);
+  position: absolute;
+  left: 0;
+}
+
+/* Highlight Box */
+.competence-highlight {
+  background: #eef2f8;
+  border-left: 4px solid var(--blue);
+  margin-top: 20px;
+  padding: 12px;
+  color: var(--darkblue);
+  border-radius: 4px;
+}
+
+/* RIGHT IMAGE */
+.competence-image {
+  flex: 1 1 0;
+  min-width: 0;
+  position: relative;
+}
+
+.competence-image img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Three headed columns side by side. A grid with equal 1fr tracks, so
+   the three always share the row exactly evenly - the old version used
+   a fixed 134px gutter, which on its own was wider than a phone and
+   pushed the whole section off the right of the screen. */
+.determine-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 40px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.determine-col h4 {
+  text-align: left !important;
+}
+
+.principle-6 {
+  margin-bottom: 20px;
+  text-align: left !important;
+}
+
+/* =========================
+   PRINCIPLE BLOCK SHARED
+========================= */
+
+.pblock-section {
+  padding: 37px 0px;
+  background: var(--white);
+}
+
+/* Alternate background */
+.alt-bg {
+  background: var(--background);
+}
+
+/* Layout - image one side, copy the other, in equal halves */
+.pblock-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Reverse layout */
+.reverse-layout {
+  flex-direction: row-reverse;
+}
+
+/* LEFT/RIGHT - equal halves that hold their ratio at every width; the
+   stack to one column happens at the phone breakpoint, not by wrapping */
+.pblock-content {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.pblock-content p {
+  text-align: left !important;
+}
+
+.pblock-media {
+  flex: 1 1 0;
+  min-width: 0;
+  position: relative;
+}
+
+/* Image */
+.pblock-media img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Badge */
+.pblock-count {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+/* Label */
+
+/* Title */
+
+/* Paragraph */
+
+/* =========================
+   CTA SECTION
+========================= */
+
+.cta-section {
+  background: var(--background);
+  text-align: center;
+  padding: 40px 0 90px 0;
+  border-bottom: 1px solid #d9e2ef;
+}
+
+/* Description */
+/* ============================================================
+   RESPONSIVE LAYERS
+
+   The intro columns, the principle blocks and the three-up
+   "determine" grid all keep their columns on tablets and laptops -
+   only the gaps and type tighten. Everything becomes a single
+   column at 767px.
+   ============================================================ */
+
+/* ============================================================
+    1024px and below - tablet / small laptop
+   ============================================================ */
+@media (max-width: 1024px) {
+  .intro-section {
+    padding: 55px 0;
+  }
+
+  .intro-wrapper {
+    gap: 28px;
+  }
+
+  .intro-item {
+    padding: 12px 14px;
+  }
+
+  .pblock-section {
+    padding: 30px 0;
+  }
+
+  .pblock-row {
+    gap: 28px;
+  }
+
+  .determine-col {
+    gap: 18px 24px;
+    margin-top: 35px;
+    padding: 0px 20px;
+  }
+
+  .competence-highlight {
+    padding: 10px;
+    margin-top: 16px;
+  }
+}
+
+/* ============================================================
+   900px and below - same columns, tighter again
+   ============================================================ */
+@media (max-width: 900px) {
+  .intro-section {
+    padding: 45px 0;
+  }
+
+  /* ---- Introduction: heading on top, list underneath ---- */
+  .intro-wrapper {
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .pblock-row {
+    gap: 22px;
+  }
+
+  .determine-col {
+    gap: 16px;
+  }
+
+  .circle-list li,
+  .check-list li {
+    padding-left: 18px;
+  }
+}
+
+/* ============================================================
+    767px and below - phones: one column everywhere
+   ============================================================ */
+@media (max-width: 767px) {
+  .intro-section {
+    padding: 45px 0;
+  }
+
+  /* ---- Introduction: heading on top, list underneath ---- */
+  .intro-wrapper {
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  /* ---- Principle blocks: image and copy stack. The reversed rows
+         use column too, so the picture always follows its heading
+         rather than jumping above it. ---- */
+  .pblock-row,
+  .reverse-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .pblock-section {
+    padding: 26px 0;
+  }
+
+  /* ---- "How to Determine ...": one column per row ---- */
+  .determine-col {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 28px;
+  }
+
+  .pblock-count {
+    top: 10px;
+    left: 10px;
+  }
+
+  /* ---- CTA section ---- */
+  .cta-section {
+    padding: 36px 0 55px;
+  }
+}
+
+/* ============================================================
+    425px and below - small phones
+   ============================================================ */
+@media (max-width: 425px) {
+  /* the badge overlaps the hero photo too heavily to stay readable at
+     this width */
+  .certified-quality {
+    display: none;
+  }
+
+  .intro-section {
+    padding: 40px 0;
+  }
+
+  .intro-item {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .body-description2 {
+    font-size: 14px;
+  }
+
+  .label {
+    margin-bottom: 4px;
+  }
+
+  .accent-text {
+    font-size: 14px;
+  }
+
+  .pblock-row,
+  .reverse-layout {
+    gap: 20px;
+  }
+
+  .cta-section {
+    padding: 32px 0 48px;
+  }
+}

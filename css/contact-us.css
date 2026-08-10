@@ -1,0 +1,287 @@
+/* =========================
+   CONTACT HERO
+========================= */
+
+.contact-hero {
+  background: var(--background);
+  color: var(--darkblue);
+  padding: 40px 0 40px 0;
+
+  /* subtle dotted pattern */
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 18px 18px;
+}
+
+.contact-hero-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+/* badges - they sit in one row next to the heading on desktop and wrap
+   onto as many rows as they need on a narrow screen */
+.contact-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.badge-item {
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.red-bg {
+  background: var(--red);
+}
+.blue-bg {
+  background: var(--blue);
+}
+.light-bg {
+  background: var(--text-color);
+}
+
+/* =========================
+   CONTACT CARDS
+========================= */
+
+.contact-cards-section {
+  background: var(--white);
+  padding: 60px 0;
+}
+
+/* grid layout - three across, kept at three on tablets and laptops.
+   Equal 1fr columns, so the row is always shared evenly. */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* individual card */
+.contact-card {
+  background: rgb(238, 236, 236);
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* borders */
+.red-border {
+  border-top: 3px solid var(--red);
+}
+
+.blue-border {
+  border-top: 3px solid var(--blue);
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+/* Tablet / laptop - cards stay three across, just tighter */
+@media (max-width: 1024px) {
+  .contact-cards-section {
+    padding: 55px 0;
+  }
+
+  .contact-grid {
+    gap: 14px;
+  }
+
+  .contact-card {
+    padding: 16px;
+  }
+
+  .contact-hero-wrapper {
+    gap: 24px;
+  }
+
+  .contact-badges {
+    gap: 10px;
+  }
+
+  .badge-item {
+    padding: 10px 12px;
+  }
+}
+
+/* Phones - hero stacks and centres, cards go one per row */
+@media (max-width: 767px) {
+  .contact-hero-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-badges {
+    justify-content: center;
+  }
+
+  .contact-cards-section {
+    padding: 45px 0;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contact-card {
+    padding: 20px;
+  }
+}
+
+/* Small phones - one badge per row so each stays readable */
+@media (max-width: 425px) {
+  .contact-badges {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .badge-item {
+    text-align: center;
+  }
+}
+
+/* =========================
+   CTA BAR
+========================= */
+
+.cta-bar {
+  background: var(--darkblue);
+  color: var(--white);
+  padding: 25px 0;
+}
+
+.cta-bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+/* CTA text */
+
+.cta-text p {
+  color: var(--white) !important;
+}
+
+/* buttons */
+.btn {
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-red {
+  background: var(--red);
+  color: #fff;
+}
+
+.btn-outline {
+  border: 1px solid #fff;
+  color: #fff;
+  margin-left: 10px;
+}
+
+/* =========================
+   LOCATION AREA
+========================= */
+
+.location-area {
+  background: var(--background);
+
+  /* dotted pattern */
+  background-image: radial-gradient(#d5dced 1px, transparent 1px);
+  background-size: 18px 18px;
+
+  padding: 60px 0;
+  text-align: center;
+}
+
+/* card */
+.location-card {
+  background: #fff;
+  display: inline-block;
+  padding: 20px 25px;
+  border-radius: 6px;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.location-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* map pin */
+.map-pin {
+  width: 22px;
+  height: 22px;
+  background: var(--red);
+  border-radius: 50%;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* small triangle under pin */
+.map-pin::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 10px solid var(--red);
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* Phones - the CTA bar text and its buttons stack and centre */
+@media (max-width: 767px) {
+  .cta-bar-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cta-actions {
+    margin-top: 10px;
+  }
+
+  .location-area {
+    padding: 45px 0;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    text-align: center;
+  }
+
+  .btn-outline {
+    margin-left: 0;
+  }
+}
