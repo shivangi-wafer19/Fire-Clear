@@ -593,6 +593,10 @@
     font-size: 24px;
   }
 
+  .cta-content p {
+    margin: 10px 100px 20px;
+  }
+
   .cta-content p,
   .cta-content h2 {
     text-align: center;
@@ -688,6 +692,10 @@
 
   .approach-img {
     width: 100%;
+  }
+
+  .cta-content p {
+    margin: 20px auto 20px;
   }
 
   .cta-content p,
@@ -796,7 +804,7 @@
   /* ---- CTA ---- */
   .cta-content p {
     font-size: 16px;
-    margin: 18px auto 24px;
+    margin: 20px auto;
   }
 }
 
@@ -849,6 +857,10 @@
 
   .timeline-item p {
     margin: 12px 61px 0px;
+  }
+
+  .cta-content p {
+    margin: 20px auto 20px;
   }
 
   .cta-content p,

@@ -7,7 +7,7 @@
 
 .hero-background {
   background: var(--background);
-  padding: 60px 0px;
+  padding: 40px 0px;
   text-align: center;
 
   /* Subtle dotted background */
@@ -55,7 +55,7 @@
 
 .overview-section {
   background: var(--white);
-  padding: 70px 0;
+  padding: 40px 0px;
 }
 
 .overview-wrapper {
@@ -113,7 +113,7 @@
 ========================= */
 
 .requirement-section {
-  padding: 60px 0;
+  padding: 40px 0px;
   background: var(--background);
 }
 
@@ -153,7 +153,7 @@
 ========================= */
 
 .process-section {
-  padding: 60px 0;
+  padding: 40px 0px;
   background: var(--white);
 }
 
@@ -307,7 +307,7 @@
 ========================= */
 
 .risk-section {
-  padding: 60px 0;
+  padding: 40px 0px;
   background: var(--background);
 }
 
@@ -454,7 +454,7 @@
 ========================= */
 
 .governance-section {
-  padding: 60px 0;
+  padding: 40px 0px;
   background: #1f2946;
 }
 
@@ -619,7 +619,7 @@
 ========================= */
 
 .training-section {
-  padding: 60px 0;
+  padding: 40px 0px;
   background: var(--background);
 }
 
@@ -695,7 +695,7 @@ training-card-header .icon {
 ========================= */
 
 .training-section {
-  padding: 60px 0;
+  padding: 40px 0px;
   background: var(--white);
   border-bottom: 1px solid #d9e2ef;
 }
@@ -729,7 +729,7 @@ training-card-header .icon {
 ========================= */
 
 .integration-section {
-  padding: 60px 0;
+  padding: 40px 0px;
   background: var(--white);
 }
 
@@ -891,12 +891,8 @@ training-card-header .icon {
   align-items: center;
 }
 
-.cta-content h2 {
-  margin-bottom: 20px;
-}
-
 .cta-content p {
-  margin: 0px 74px 10px;
+  margin: 20px auto;
 }
 
 /* ==========================================================================
@@ -925,7 +921,7 @@ training-card-header .icon {
   .governance-section,
   .training-section,
   .integration-section {
-    padding: 40px 0;
+    padding: 40px 0px;
   }
 
   .process-wrapper,
@@ -959,7 +955,7 @@ training-card-header .icon {
   }
 
   .cta-content p {
-    margin: 15px 74px 20px;
+    margin: 10px 100px 20px;
   }
 }
 
@@ -1026,7 +1022,7 @@ training-card-header .icon {
   }
 
   .cta-content p {
-    margin: 0px 74px 20px;
+    margin: 20px auto 20px;
   }
 }
 
@@ -1131,14 +1127,13 @@ training-card-header .icon {
     text-align: left;
   }
 
-  .btn-cta {
-    margin-top: 15px;
+  .cta-content p {
+    margin: 20px auto 20px;
   }
 
   .cta-content p,
   .cta-content h2 {
     text-align: center;
-    margin: 8px 15px;
   }
 
   /* these rows put their trailing "+" icon on its own line rather than

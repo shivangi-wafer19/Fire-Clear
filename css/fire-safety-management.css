@@ -331,12 +331,8 @@
   align-items: center;
 }
 
-.cta-content h2 {
-  margin-bottom: 20px;
-}
-
 .cta-content p {
-  margin: 0px 74px 10px;
+  margin: 20px auto;
 }
 
 /* ============================================================
@@ -437,6 +433,10 @@
   .value-wrapper {
     gap: 26px;
   }
+
+  .cta-content p {
+    margin: 10px 100px 20px;
+  }
 }
 
 /* ============================================================
@@ -533,6 +533,10 @@
   .cta-section .body-description {
     margin-inline: auto;
     max-width: 640px;
+  }
+
+  .cta-content p {
+    margin: 20px auto 20px;
   }
 }
 
@@ -643,14 +647,13 @@
     text-align: left;
   }
 
-  .btn-cta {
-    margin-top: 20px;
+  .cta-content p {
+    margin: 20px auto 20px;
   }
 
   .cta-content p,
   .cta-content h2 {
     text-align: center;
-    margin: 10px;
   }
 
   .list-icon {
