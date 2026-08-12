@@ -23,7 +23,7 @@ body {
 
 body {
   margin: 0;
-  font-family: "Noto Sans", sans-serif !important;
+  font-family: "Noto Sans", sans-serif;
   color: var(--text-color);
 }
 
@@ -71,10 +71,6 @@ HEADER
 .logo {
   font-family:
     "Noto Sans", sans-serif; /* Glacial Indifference is not available via Google Fonts - using Noto Sans as the closest loaded substitute until a licensed font file is added */
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  color: var(--black);
-  font-size: 20px;
 }
 
 /* Nav */
@@ -90,9 +86,9 @@ HEADER
 .nav-link {
   text-decoration: none;
   color: var(--text-color);
-  font-weight: 500 !important;
-  font-size: 14px !important;
-  line-height: 20px !important;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
   transition:
     background 0.3s ease,
     color 0.3s ease;
@@ -106,9 +102,9 @@ HEADER
 .nav-list a.nav-link.active {
   color: var(--red);
   text-decoration: none;
-  font-weight: 500 !important;
-  font-size: 14px !important;
-  line-height: 20px !important;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
   border-bottom: 2px solid var(--red);
 }
 
@@ -118,7 +114,7 @@ HEADER
   line-height: 24px;
   font-weight: 500;
   background: var(--darkblue);
-  color: var(--white) !important;
+  color: var(--white);
   padding: 13px 14px;
   margin-right: 20px;
   border-radius: 6px;
@@ -130,7 +126,7 @@ HEADER
 .btn-nav:hover {
   border: 1px solid var(--darkblue);
   background-color: transparent;
-  color: var(--darkblue) !important;
+  color: var(--darkblue);
 }
 
 /* 
@@ -158,11 +154,11 @@ FOOTER
 }
 
 .accent-text {
-  color: var(--black) !important;
+  color: var(--black);
 }
 
 .footer-col p {
-  color: var(--text-color);
+  margin-top: 9%;
 }
 
 .footer-col ul {
@@ -180,7 +176,7 @@ FOOTER
 }
 
 .contact-list i {
-  margin-left: -28px !important;
+  margin-left: -28px;
   color: var(--darkblue);
 }
 
@@ -195,7 +191,7 @@ FOOTER
 
 .share-icon {
   display: flex;
-  margin: 20px 18px !important;
+  margin: 20px 18px;
   text-align: center;
   gap: 10px;
 }
@@ -206,18 +202,23 @@ FOOTER
   padding: 15px;
 }
 
+.icons i {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
 .icon-container {
-  padding: 0px 0px !important;
+  padding: 0px 0px;
 }
 
 .footer-Policy {
-  padding-top: 15px !important;
+  padding-top: 15px;
 }
 
 .footer-Policy a {
   text-decoration: none;
   color: var(--black);
-  margin-right: 10px !important;
+  margin-right: 10px;
   margin-top: 10px;
 }
 
@@ -243,7 +244,7 @@ FOOTER
   }
 
   .icon-container {
-    padding: 0px 0px !important;
+    padding: 0px 0px;
   }
 }
 
@@ -268,7 +269,7 @@ FOOTER
   /* the contact list pulls its icons left to line them up with the text;
      that hangs off the edge once the column is centred */
   .contact-list i {
-    margin-left: 0 !important;
+    margin-left: 0;
   }
 
   .footer-col ul {
@@ -291,7 +292,7 @@ FOOTER
   }
 
   .footer-Policy {
-    padding-top: 0 !important;
+    padding-top: 0;
   }
 }
 
@@ -301,11 +302,11 @@ FOOTER
   }
 
   .footer-bottom p {
-    font-size: 12px !important;
+    font-size: 12px;
   }
 
   .footer-Policy {
-    font-size: 12px !important;
+    font-size: 12px;
   }
 }
 
@@ -358,6 +359,14 @@ FOOTER
     padding: 15px 0;
   }
 
+  .footer-col p {
+    margin-top: 13%;
+  }
+}
+/* ==================================================
+   MOBILE (768px and below)
+================================================== */
+@media (max-width: 768px) {
   /* show hamburger, hide the inline desktop nav */
   .menu-toggle {
     display: flex;
@@ -373,7 +382,7 @@ FOOTER
   }
 
   .nav-list {
-    display: none; /* hidden until .active is toggled by JS */
+    display: none;
     flex-direction: column;
     width: 100%;
     background: #fff;
@@ -391,7 +400,7 @@ FOOTER
 
   .nav-list a {
     display: block;
-    padding: 18px; /* comfortable tap target */
+    padding: 18px;
     font-size: 14px;
   }
 
@@ -405,6 +414,13 @@ FOOTER
     border-radius: 0;
     text-align: center;
   }
+
+  .footer-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .footer-col p {
+    margin-top: 21%;
+  }
 }
 
 /* ==================================================
@@ -415,8 +431,15 @@ FOOTER
     padding-top: 75px;
   }
 
-  .logo img {
-    width: 145px;
+  .logo {
+    text-align: center;
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .footer-col p {
+    margin-top: 0%;
   }
 
   .nav-list a {

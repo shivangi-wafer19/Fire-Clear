@@ -1,63 +1,3 @@
-/* =========================
-   SHARED STYLES
-========================= */
-
-/* Buttons */
-.btn-group {
-  display: flex;
-  gap: 10px;
-}
-
-.btn {
-  padding: 12px 18px;
-  text-decoration: none;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-/* Primary Button (Blue) */
-.btn-primary {
-  background: var(--darkblue);
-  color: var(--white);
-  padding: 12px 24px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-/* Secondary Button (Outline Red) */
-.btn-secondary {
-  border: 2px solid var(--red);
-  background: var(--red);
-  color: var(--white);
-  padding: 10px 22px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: 0.3s;
-  box-shadow: 0 4px 10px rgba(226, 128, 128, 0.89);
-}
-
-/* Hover Effects */
-.btn-primary:hover {
-  border: 2px solid var(--darkblue);
-  background-color: transparent;
-  color: var(--darkblue) !important;
-  font-weight: 600;
-}
-
-.btn-secondary:hover {
-  border: 2px solid var(--red);
-  background-color: transparent;
-  color: var(--red);
-}
-
-.icon {
-  width: 89px;
-  height: 81px;
-}
-
 /* SHARED ANIMATIONS (.animate-up/.animate-left/.animate-right/.show/.show-item)
    are defined once in common.css, which every page loads before this file. */
 
@@ -65,9 +5,9 @@
    HERO TEXT SECTION
 ========================= */
 
-.hero-text-section {
+.hero-background {
   background: var(--background);
-  padding: 40px 0 60px 0;
+  padding: 60px 0px;
   text-align: center;
 
   /* Subtle dotted background */
@@ -120,17 +60,17 @@
 
 .overview-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: start;
 }
 
 .overview-content {
   max-width: 700px;
-  text-align: center;
+  text-align: left;
 }
 
 /* Center card */
 .center-card {
-  margin: 25px auto 0;
+  margin: 6% 0 0;
   max-width: 500px;
   background: var(--darkblue);
   color: #fff;
@@ -146,14 +86,15 @@
 
 .circle-list {
   margin-top: 20px;
+  padding: 0px;
 }
 
 .circle-list li {
   position: relative;
   margin-bottom: 8px;
   text-align: left;
-  padding-left: 25%;
   list-style: none;
+  padding-left: 18px;
 }
 
 .circle-list li::before {
@@ -163,7 +104,7 @@
   border: 2px solid var(--red);
   border-radius: 50%;
   position: absolute;
-  left: 22%;
+  left: 0%;
   top: 6px;
 }
 
@@ -172,7 +113,7 @@
 ========================= */
 
 .requirement-section {
-  padding: 60px 0 !important;
+  padding: 60px 0;
   background: var(--background);
 }
 
@@ -198,7 +139,7 @@
 
 .requirement-card i {
   color: var(--red);
-  font-size: 18px !important;
+  font-size: 18px;
   margin-top: 3px;
 }
 
@@ -212,7 +153,7 @@
 ========================= */
 
 .process-section {
-  padding: 60px 0 !important;
+  padding: 60px 0;
   background: var(--white);
 }
 
@@ -458,7 +399,7 @@
 .recommendation-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .recommendation-left i {
@@ -513,7 +454,7 @@
 ========================= */
 
 .governance-section {
-  padding: 60px 0 !important;
+  padding: 60px 0;
   background: #1f2946;
 }
 
@@ -558,12 +499,6 @@
   transform: translateY(-4px);
 }
 
-.quote-icon {
-  color: var(--red);
-  font-size: 16px;
-  margin-top: 2px;
-}
-
 .quote-text p {
   margin: 0;
   color: #fff;
@@ -602,18 +537,8 @@
 /* Letter Box */
 
 .governance-letter {
-  width: 24px;
-  height: 24px;
-  background: var(--red);
-  color: #fff;
-  border-radius: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 12px;
-  font-weight: 700;
-  flex-shrink: 0;
-  transition: 0.25s;
+  font-size: 18px;
+  color: var(--red);
 }
 
 /* Text */
@@ -643,12 +568,6 @@
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.18);
   box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
-}
-
-/* Blue letter on hover */
-
-.governance-item:hover .governance-letter {
-  background: var(--blue);
 }
 
 /* Stair Effect */
@@ -685,12 +604,6 @@
   z-index: 2;
 }
 
-/* Letter */
-
-.governance-item:hover .governance-letter {
-  background: var(--blue);
-}
-
 /* Text */
 
 .governance-item:hover .governance-info h4 {
@@ -706,8 +619,12 @@
 ========================= */
 
 .training-section {
-  padding: 60px 0 !important;
+  padding: 60px 0;
   background: var(--background);
+}
+
+.training-main-section {
+  text-align: center;
 }
 
 .training-wrapper {
@@ -725,6 +642,10 @@
   flex: 1 1 0;
   min-width: 0;
   max-width: 540px;
+}
+
+.training-card-header p {
+  color: var(--black);
 }
 
 .training-content .section-title {
@@ -774,7 +695,7 @@ training-card-header .icon {
 ========================= */
 
 .training-section {
-  padding: 60px 0 !important;
+  padding: 60px 0;
   background: var(--white);
   border-bottom: 1px solid #d9e2ef;
 }
@@ -788,7 +709,7 @@ training-card-header .icon {
 .training-list li {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   padding: 16px 22px;
   border-top: 1px solid #e6ebf2;
   transition: background 0.3s ease;
@@ -808,7 +729,7 @@ training-card-header .icon {
 ========================= */
 
 .integration-section {
-  padding: 60px 0 !important;
+  padding: 60px 0;
   background: var(--white);
 }
 
@@ -884,26 +805,22 @@ training-card-header .icon {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 17px 18px;
-
   background: var(--white);
-
   border: 1px solid #dbe2eb;
   border-radius: 5px;
-
   cursor: pointer;
 }
 
 .integration-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .integration-left i {
   color: var(--red);
-  width: 20px !important;
+  width: 20px;
 }
 
 .integration-left span {
@@ -957,9 +874,9 @@ training-card-header .icon {
 }
 
 .discussion-content {
+  align-items: center;
   max-width: 700px;
   margin: auto;
-  text-align: center;
 }
 
 .discussion-content .tag-label {
@@ -974,6 +891,18 @@ training-card-header .icon {
 }
 
 /* Buttons */
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .discussion-content .btn-group {
   justify-content: center;
@@ -1001,7 +930,7 @@ training-card-header .icon {
     LAPTOP / LARGE TABLET -- max-width: 1024px
    ========================================================================== */
 @media (max-width: 1024px) {
-  .hero-text-section,
+  .hero-background,
   .overview-section,
   .requirement-section,
   .process-section,
@@ -1010,7 +939,7 @@ training-card-header .icon {
   .training-section,
   .integration-section,
   .discussion-section {
-    padding: 55px 0 !important;
+    padding: 55px 0;
   }
 
   .process-wrapper,
@@ -1048,6 +977,20 @@ training-card-header .icon {
    -- max-width: 900px, same columns, tighter again
    ========================================================================== */
 @media (max-width: 900px) {
+  .hero-background,
+  .overview-section,
+  .requirement-section,
+  .process-section,
+  .risk-section,
+  .governance-section,
+  .integration-section,
+  .discussion-section {
+    padding: 24px 0;
+  }
+
+  .hero-description {
+    margin: 15px 100px;
+  }
   .requirement-grid {
     gap: 10px;
   }
@@ -1058,19 +1001,22 @@ training-card-header .icon {
   .integration-item,
   .recommendation-item {
     padding: 12px;
-    gap: 10px;
+    gap: 14px;
   }
 
-  .process-number,
-  .governance-letter {
+  .overview-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .center-card {
+    margin: 2% 0 0;
+  }
+
+  .process-number {
     width: 26px;
     height: 26px;
     font-size: 12px;
-  }
-
-  .process-section,
-  .governance-section {
-    padding: 45px 0 !important;
   }
 
   /* every two-up section becomes one full-width column */
@@ -1085,21 +1031,21 @@ training-card-header .icon {
     padding: 18px;
     top: 24px;
   }
+
+  .btn-group p {
+    margin: 18px 19px;
+  }
 }
 
 /* ==========================================================================
    PHONES -- max-width: 767px
    ========================================================================== */
 @media (max-width: 767px) {
-  .circle-list li {
-    padding-left: 13%;
-  }
-
   .circle-list li::before {
     left: 8%;
   }
 
-  .hero-text-section,
+  .hero-background,
   .overview-section,
   .requirement-section,
   .process-section,
@@ -1108,7 +1054,7 @@ training-card-header .icon {
   .training-section,
   .integration-section,
   .discussion-section {
-    padding: 45px 0 !important;
+    padding: 45px 0;
   }
 
   /* every two-up section becomes one full-width column */
@@ -1124,7 +1070,7 @@ training-card-header .icon {
 
   /* "When PC-FRA Is Required" drops to a single column too */
   .requirement-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(1, 1fr);
     gap: 12px;
   }
 
@@ -1191,8 +1137,6 @@ training-card-header .icon {
 
   /* these rows put their trailing "+" icon on its own line rather than
      squeezing the label */
-  .governance-item,
-  .integration-item,
   .recommendation-item {
     flex-direction: column;
     align-items: flex-start;
@@ -1200,12 +1144,44 @@ training-card-header .icon {
     gap: 8px;
   }
 
+  .governance-item {
+    display: flex;
+    gap: 14px;
+  }
+
+  .integration-item i {
+    align-self: center;
+    display: flex;
+  }
+
+  .requirement-card {
+    display: flex;
+    margin: 0px;
+    align-items: center;
+  }
+
+  .overview-content {
+    text-align: left;
+  }
+
+  .circle-list {
+    padding: 0px;
+  }
+
+  .circle-list li {
+    text-align: left;
+  }
+
+  .circle-list li::before {
+    left: 0%;
+  }
+
   .recommendation-icon,
   .integration-icon {
     align-self: flex-end;
   }
 
-  .hero-text-section,
+  .hero-background,
   .overview-section,
   .requirement-section,
   .process-section,
@@ -1214,6 +1190,6 @@ training-card-header .icon {
   .training-section,
   .integration-section,
   .discussion-section {
-    padding: 38px 0 !important;
+    padding: 38px 0;
   }
 }

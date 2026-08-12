@@ -2,6 +2,7 @@
    pixels lower. Everything else about it comes from common.css. */
 .certified-quality {
   bottom: -47px;
+  padding: 13px 6px;
 }
 
 /* ---- Overview / Challenge section ---- */
@@ -48,24 +49,8 @@
 }
 
 .list-icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  border: 2px solid var(--red);
-  border-radius: 50%;
-  position: relative;
-}
-
-.list-icon::after {
-  content: "";
-  width: 7px;
-  height: 7px;
-  background: var(--red);
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  color: var(--red);
+  font-size: 19px;
 }
 
 .challenge-card {
@@ -128,6 +113,10 @@
   background: var(--background);
 }
 
+.core-service-section h2 {
+  margin-bottom: 30px;
+}
+
 .service-item {
   background: var(--white);
   border-left: 4px solid var(--red);
@@ -146,13 +135,14 @@
 }
 
 .service-icon img {
-  width: 65px !important;
+  width: 65px;
   height: auto;
 }
 
 .toggle-icon {
   font-size: 20px;
   color: var(--darkblue);
+  margin-left: auto;
 }
 
 .service-content {
@@ -168,13 +158,13 @@
 .service-content li {
   margin-bottom: 8px;
   color: var(--text-color);
-  text-align: left !important;
+  text-align: left;
 }
 
 .service-content p {
   margin-top: 10px;
   color: var(--black);
-  text-align: left !important;
+  text-align: left;
 }
 
 .service-item.active {
@@ -193,7 +183,7 @@
 /* ---- How We Work (steps) ---- */
 .approach-section {
   background: var(--darkblue);
-  color: var(--white) !important;
+  color: var(--white);
   padding: 70px 0;
   text-align: center;
 }
@@ -205,12 +195,19 @@
   gap: 30px 20px;
   margin-top: 50px;
   text-align: left;
+  padding-left: 58px;
 }
 
 .step-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
+  transition: transform 0.3s ease;
+}
+
+.step-item:hover,
+.step-item:focus-visible {
+  transform: translateY(-5px);
 }
 
 .step-circle {
@@ -222,6 +219,7 @@
   border-radius: 50%;
   display: flex;
   justify-content: center;
+  text-align: center;
   align-items: center;
   font-weight: 700;
   font-size: 18px;
@@ -230,6 +228,7 @@
 
 .step-item h4 {
   color: var(--white);
+  text-align: left;
   margin-left: 8px;
 }
 
@@ -267,18 +266,16 @@
   border: 1px solid rgb(199 205 215);
 }
 
-.value-item i {
-  color: var(--red);
-  font-size: 20px;
-  margin-right: 10px;
+.value-item span {
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
-.dot {
-  width: 12px;
-  height: 12px;
-  border: 3px solid var(--red);
-  border-radius: 50%;
-  margin-right: 10px;
+.value-item i {
+  color: var(--red);
+  font-size: 18px;
+  text-align: center;
 }
 
 .number {
@@ -300,6 +297,10 @@
   opacity: 0;
 }
 
+.value-right h2 {
+  margin-bottom: 68px;
+}
+
 .value-left.show,
 .value-right.show {
   transform: translateX(0);
@@ -313,6 +314,24 @@
   text-align: center;
   padding: 80px 0;
   border-bottom: 1px solid #d9e2ef;
+}
+
+.get-started {
+  text-align: center;
+}
+
+.cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-content h2 {
+  margin-bottom: 20px;
+}
+
+.cta-content p {
+  margin: 0px 74px 20px;
 }
 
 /* ============================================================
@@ -370,7 +389,7 @@
 
   /* ---- How We Work: still five columns ---- */
   .steps-wrapper {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .step-circle {
@@ -380,21 +399,22 @@
   }
 
   .step-item {
-    gap: 10px;
+    gap: 14px;
   }
 
   .step-item h4 {
     margin-left: 0;
+    margin-top: 4px;
   }
 
   /* ---- Core Service Areas ---- */
   .service-header {
-    gap: 12px;
+    gap: 14px;
     padding: 16px;
   }
 
   .service-icon img {
-    width: 52px !important;
+    width: 52px;
   }
 
   .service-content {
@@ -411,6 +431,10 @@
   900px and below - one more notch tighter, same columns
    ============================================================ */
 @media (max-width: 900px) {
+  .certified-quality {
+    bottom: -83px;
+  }
+
   .role-card-wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -423,12 +447,37 @@
 
   .role-card {
     padding: 18px 12px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .role-card i {
+    margin: 0px;
+    margin-top: 3px;
+  }
+
+  .cards {
+    display: flex;
+    gap: 14px;
+  }
+
+  .step-item {
+    align-items: center;
   }
 
   .step-circle {
     width: 30px;
     height: 30px;
     font-size: 14px;
+  }
+
+  .oversight {
+    display: flex;
+    gap: 0px;
+  }
+
+  .oversight ul {
+    margin-right: 10px;
   }
 
   .challenge-section .container {
@@ -442,7 +491,7 @@
   }
 
   .challenge-list li {
-    align-items: flex-start;
+    align-items: center;
   }
 
   .value-wrapper {
@@ -455,19 +504,19 @@
   }
 
   .value-right h2 {
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
   }
 
   /* the CTA paragraph carries a 74px side margin inline in the markup,
      which is far too much once the screen is this narrow */
   .cta-section .body-description {
-    margin-inline: auto !important;
+    margin-inline: auto;
     max-width: 640px;
   }
 }
 
 /* ============================================================
-   767px and below - phones: one column everywhere
+   768px and below - phones: one column everywhere
    ============================================================ */
 @media (max-width: 767px) {
   .challenge-section,
@@ -491,7 +540,7 @@
   }
 
   .challenge-list li {
-    align-items: flex-start;
+    align-items: center;
   }
 
   /* the two bullet lists sit one under the other */
@@ -513,11 +562,11 @@
   /* ---- Core Service Areas ---- */
   .service-header {
     padding: 15px;
-    gap: 10px;
+    gap: 14px;
   }
 
   .service-icon img {
-    width: 46px !important;
+    width: 46px;
   }
 
   .service-content {
@@ -542,11 +591,11 @@
   }
 
   .value-right h2 {
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
   }
 
   .cta-section .body-description {
-    margin-inline: auto !important;
+    margin-inline: auto;
   }
 }
 
@@ -554,12 +603,32 @@
    425px and below - small phones
    ============================================================ */
 @media (max-width: 425px) {
+  .certified-quality {
+    bottom: -64px;
+    padding: 8px 6px;
+    left: 119px;
+  }
+
+  .list-icon {
+    align-items: center;
+  }
+
   .challenge-card {
     padding: 24px 18px;
   }
 
+  .cards i {
+    display: flex;
+    align-items: center;
+    margin: 0px;
+  }
+
   .role-card {
     padding: 20px 16px;
+  }
+
+  .toggle-icon {
+    text-align: right;
   }
 
   .value-item {

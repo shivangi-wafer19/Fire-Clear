@@ -1,6 +1,7 @@
 /* ==========================================
    Page 1
 ========================================== */
+
 /* ==========================================
    Hero / Banner Image Slider
    - simple auto-playing photo slider
@@ -12,11 +13,11 @@
 ========================================== */
 
 function startImageSlider(slider) {
-  var slides = slider.querySelectorAll(".slide");
-  var dots = slider.querySelectorAll(".slider-dot");
-  var current = 0;
-  var intervalId = null;
-  var intervalMs = 4000; // 4 seconds, matches this comment and the code below
+  const slides = slider.querySelectorAll(".slide");
+  const dots = slider.querySelectorAll(".slider-dot");
+  let current = 0;
+  let intervalId = null;
+  const intervalMs = 4000; // 4 seconds, matches this comment and the code below
 
   if (slides.length === 0) return;
 
@@ -29,12 +30,14 @@ function startImageSlider(slider) {
     slides.forEach(function (slide) {
       slide.classList.remove("active");
     });
+
     dots.forEach(function (dot) {
       dot.classList.remove("active");
       dot.setAttribute("aria-pressed", "false");
     });
 
     slides[index].classList.add("active");
+
     if (dots[index]) {
       dots[index].classList.add("active");
       dots[index].setAttribute("aria-pressed", "true");
@@ -45,8 +48,9 @@ function startImageSlider(slider) {
 
   function startAutoAdvance() {
     if (intervalId) clearInterval(intervalId);
+
     intervalId = setInterval(function () {
-      var next = (current + 1) % slides.length;
+      const next = (current + 1) % slides.length;
       showSlide(next);
     }, intervalMs);
   }
@@ -68,55 +72,75 @@ document.querySelectorAll(".image-slider").forEach(function (slider) {
 });
 
 /* ==========================================
-   Card Animation on Scroll
-========================================== */
-
-const cards = document.querySelectorAll(".work-card");
-
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  },
-  {
-    threshold: 0.3,
-  },
-);
-
-cards.forEach((card) => {
-  observer.observe(card);
-});
-
-/* ==========================================
-   Fade Cards on Scroll
-========================================== */
-
-const serviceCards = document.querySelectorAll(".service-card");
-
-const serviceObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show-card");
-      }
-    });
-  },
-  {
-    threshold: 0.2,
-  },
-);
-
-serviceCards.forEach((card) => {
-  serviceObserver.observe(card);
-});
-
-/* ==========================================
    Page 2
 ========================================== */
+/* ==========================================
+   Shared Scroll Reveal Animation
+========================================== */
 
+/*
+  Reusable IntersectionObserver helper.
+
+  What this does:
+  - Finds elements matching the selector
+  - Watches when they enter the viewport
+  - Adds the required animation class
+  - Can optionally stop observing after the first reveal
+
+  Parameters:
+  selector    = Elements to observe
+  activeClass = Class added when element becomes visible
+  threshold   = How much of element must be visible
+  once        = Whether to stop observing after first reveal
+*/
+
+function revealOnScroll(selector, activeClass, threshold = 0.2, once = true) {
+  const items = document.querySelectorAll(selector);
+
+  // Do nothing if there are no matching elements on this page.
+  if (!items.length) return;
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          // Add animation class.
+          entry.target.classList.add(activeClass);
+
+          // Stop observing after the first reveal if required.
+          if (once) {
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    },
+    {
+      threshold: threshold,
+    },
+  );
+
+  // Start observing each matching element.
+  items.forEach(function (item) {
+    observer.observe(item);
+  });
+}
+
+/* ==========================================
+   Card Animations
+========================================== */
+
+// Work cards
+revealOnScroll(".work-card", "show", 0.3, false);
+
+// Service cards
+revealOnScroll(".service-card", "show-card", 0.2, false);
+
+/* ==========================================
+   Shared Page Animations
+========================================== */
+
+// General animated elements
+revealOnScroll(".animate-up, .animate-left, .animate-right", "show", 0.2, true);
 /*
 =========================================
 ACCORDION FUNCTIONALITY
@@ -135,15 +159,16 @@ Where used:
 document.querySelectorAll(".service-header").forEach(function (header) {
   function toggleAccordion() {
     // Get parent item
-    var item = header.parentElement;
+    const item = header.parentElement;
 
     // Toggle active class (open/close)
     item.classList.toggle("active");
-    var isOpen = item.classList.contains("active");
+    const isOpen = item.classList.contains("active");
+
     header.setAttribute("aria-expanded", isOpen ? "true" : "false");
 
     // Change + to -
-    var icon = header.querySelector(".toggle-icon");
+    const icon = header.querySelector(".toggle-icon");
 
     if (isOpen) {
       icon.textContent = "-";
@@ -157,36 +182,14 @@ document.querySelectorAll(".service-header").forEach(function (header) {
   // Keyboard support: these headers are role="button" divs, so Enter/Space
   // need to be wired up manually (a real <button> would get this for free).
   header.addEventListener("keydown", function (event) {
-    if (event.key === "Enter" || event.key === " " || event.key === "Spacebar") {
+    if (
+      event.key === "Enter" ||
+      event.key === " " ||
+      event.key === "Spacebar"
+    ) {
       event.preventDefault();
       toggleAccordion();
     }
-  });
-});
-
-/*
-=========================================
-How We Work Section //
-STEP HOVER EFFECT
-=========================================
-
-What this does:
-- Adds a small highlight when user hovers on a step
-- Purely visual (no functionality change)
-
-Where used:
-- .step-item elements
-*/
-
-var steps = document.querySelectorAll(".step-item");
-
-steps.forEach(function (step) {
-  step.addEventListener("mouseenter", function () {
-    step.style.transform = "translateY(-5px)";
-  });
-
-  step.addEventListener("mouseleave", function () {
-    step.style.transform = "translateY(0)";
   });
 });
 
@@ -208,8 +211,8 @@ Where used:
 */
 
 window.addEventListener("load", function () {
-  var left = document.querySelector(".value-left");
-  var right = document.querySelector(".value-right");
+  const left = document.querySelector(".value-left");
+  const right = document.querySelector(".value-right");
 
   if (!left || !right) return;
 
@@ -226,113 +229,6 @@ window.addEventListener("load", function () {
 
 /*
 =========================================
-Hero Section //
-HERO FADE-IN EFFECT
-=========================================
-
-What this does:
-- Content fades in smoothly on page load
-- Keeps UI clean and professional
-
-Where used:
-- .hero-content
-*/
-
-window.addEventListener("load", function () {
-  const hero = document.querySelector(".hero-content");
-
-  if (hero) {
-    hero.style.opacity = "0";
-    hero.style.transform = "translateY(20px)";
-
-    setTimeout(function () {
-      hero.style.transition = "all .6s ease";
-      hero.style.opacity = "1";
-      hero.style.transform = "translateY(0)";
-    }, 100);
-  }
-});
-
-/*
-=========================================
-LEFT-RIGHT FADE IN
-=========================================
-
-What this does:
-- Left side comes slightly from left
-- Right side comes slightly from right
-- Keeps animation subtle and professional
-
-Where used:
-- .intro-left
-- .intro-right
-*/
-
-window.addEventListener("load", function () {
-  var left = document.querySelector(".intro-left");
-  var right = document.querySelector(".intro-right");
-
-  if (!left || !right) return;
-
-  left.style.opacity = "0";
-  right.style.opacity = "0";
-
-  left.style.transform = "translateX(-30px)";
-  right.style.transform = "translateX(30px)";
-
-  setTimeout(function () {
-    left.style.transition = "all 0.5s ease";
-    right.style.transition = "all 0.5s ease";
-
-    left.style.opacity = "1";
-    right.style.opacity = "1";
-
-    left.style.transform = "translateX(0)";
-    right.style.transform = "translateX(0)";
-  }, 100);
-});
-
-/*
-=========================================
-SECTION ANIMATION
-=========================================
-
-What this does:
-- Image slides from left
-- Text slides from right
-- Smooth professional effect
-
-Where used:
-- .principle-image-box
-- .principle-text-box
-*/
-
-window.addEventListener("load", function () {
-  var img = document.querySelector(".principle-image-box");
-  var text = document.querySelector(".principle-text-box");
-
-  if (!img || !text) return;
-
-  img.style.opacity = "0";
-  text.style.opacity = "0";
-
-  img.style.transform = "translateX(-40px)";
-  text.style.transform = "translateX(40px)";
-
-  setTimeout(function () {
-    img.style.transition = "all 0.5s ease";
-    text.style.transition = "all 0.5s ease";
-
-    img.style.opacity = "1";
-    text.style.opacity = "1";
-
-    img.style.transform = "translateX(0)";
-    text.style.transform = "translateX(0)";
-  }, 100);
-});
-
-/*
-=========================================
 NOTE: The former "LEFT TEXT + RIGHT IMAGE ANIMATION" block targeting
 .competence-text / .competence-image has been removed. Those classes
 never existed in any page's HTML, so the block threw a TypeError on
@@ -346,97 +242,95 @@ SCROLL FADE-IN ANIMATION
 =========================================
 
 What this does:
-- Each section fades in when visible
-- Keeps UI smooth & modern
+- Each .pblock-section fades in when it enters the viewport
+- Uses IntersectionObserver for better performance
+- Prevents unnecessary work during scrolling
 
 Where used:
 - .pblock-section
 */
 
-window.addEventListener("scroll", function () {
-  var blocks = document.querySelectorAll(".pblock-section");
+const pblockSections = document.querySelectorAll(".pblock-section");
 
-  blocks.forEach(function (block) {
-    var position = block.getBoundingClientRect().top;
+if (pblockSections.length > 0) {
+  const pblockObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          // Add class to start the CSS animation
+          entry.target.classList.add("show-pblock");
 
-    if (position < window.innerHeight - 100) {
-      block.style.opacity = "1";
-      block.style.transform = "translateY(0)";
-      block.style.transition = "all 0.5s ease";
-    }
+          // Stop observing after the animation has started
+          pblockObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      // Start animation when 10% of the section is visible
+      threshold: 0.1,
+
+      // Keep the same 100px trigger offset as the old code
+      rootMargin: "0px 0px -100px 0px",
+    },
+  );
+
+  // Observe each pblock section
+  pblockSections.forEach(function (block) {
+    pblockObserver.observe(block);
   });
-});
-
-/* initial state */
-document.querySelectorAll(".pblock-section").forEach(function (block) {
-  block.style.opacity = "0";
-  block.style.transform = "translateY(40px)";
-});
+}
 
 /* ==========================================
    Page 4 Animations
 ========================================== */
 
-window.addEventListener("load", function () {
-  /* Hero & Intro */
-
-  document
-    .querySelectorAll(".hero-section, .intro-section")
-    .forEach(function (section) {
-      section.style.opacity = "0";
-      section.style.transform = "translateY(30px)";
-      section.style.transition = "all .6s ease";
-
-      setTimeout(function () {
-        section.style.opacity = "1";
-        section.style.transform = "translateY(0)";
-      }, 150);
-    });
-
-  /* Overview */
-
-  var overview = document.querySelector(".overview-content");
-
-  if (overview) {
-    overview.style.opacity = "0";
-    overview.style.transform = "translateY(30px)";
-    overview.style.transition = "all .6s ease";
-
-    setTimeout(function () {
-      overview.style.opacity = "1";
-      overview.style.transform = "translateY(0)";
-    }, 250);
-  }
-});
-
 /* ==========================================
-   Shared Scroll Animation
+   Page Load Animations
 ========================================== */
 
-const animatedItems = document.querySelectorAll(
-  ".animate-up, .animate-left, .animate-right",
-);
+function fadeInOnLoad(selector, axis, distance, delay, duration) {
+  const elements = document.querySelectorAll(selector);
 
-if (animatedItems.length > 0) {
-  const animationObserver = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
+  if (!elements.length) return;
 
-          animationObserver.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.2,
-    },
-  );
+  elements.forEach(function (element) {
+    // Starting position
+    element.style.opacity = "0";
 
-  animatedItems.forEach(function (item) {
-    animationObserver.observe(item);
+    if (axis === "x") {
+      element.style.transform = `translateX(${distance}px)`;
+    } else {
+      element.style.transform = `translateY(${distance}px)`;
+    }
+
+    // Start animation
+    setTimeout(function () {
+      element.style.transition = `all ${duration}s ease`;
+      element.style.opacity = "1";
+      element.style.transform =
+        axis === "x" ? "translateX(0)" : "translateY(0)";
+    }, delay);
   });
 }
+
+window.addEventListener("load", function () {
+  // Hero
+  fadeInOnLoad(".hero-content", "y", 20, 100, 0.6);
+
+  // Intro
+  fadeInOnLoad(".intro-left", "x", -30, 100, 0.5);
+  fadeInOnLoad(".intro-right", "x", 30, 100, 0.5);
+
+  // Principle section
+  fadeInOnLoad(".principle-image-box", "x", -40, 100, 0.5);
+  fadeInOnLoad(".principle-text-box", "x", 40, 100, 0.5);
+
+  // Page 4 hero and intro
+  fadeInOnLoad(".hero-section, .intro-section", "y", 30, 150, 0.6);
+
+  // Overview
+  fadeInOnLoad(".overview-content", "y", 30, 250, 0.6);
+});
 
 /* ======================================
    Recommendation Accordion
@@ -447,10 +341,19 @@ const recommendationItems = document.querySelectorAll(".recommendation-item");
 recommendationItems.forEach(function (item) {
   item.addEventListener("click", function () {
     this.classList.toggle("active");
-    this.setAttribute("aria-expanded", this.classList.contains("active") ? "true" : "false");
+
+    this.setAttribute(
+      "aria-expanded",
+      this.classList.contains("active") ? "true" : "false",
+    );
   });
+
   item.addEventListener("keydown", function (event) {
-    if (event.key === "Enter" || event.key === " " || event.key === "Spacebar") {
+    if (
+      event.key === "Enter" ||
+      event.key === " " ||
+      event.key === "Spacebar"
+    ) {
       event.preventDefault();
       this.click();
     }
@@ -475,8 +378,13 @@ governanceItems.forEach(function (item) {
     this.classList.add("active");
     this.setAttribute("aria-selected", "true");
   });
+
   item.addEventListener("keydown", function (event) {
-    if (event.key === "Enter" || event.key === " " || event.key === "Spacebar") {
+    if (
+      event.key === "Enter" ||
+      event.key === " " ||
+      event.key === "Spacebar"
+    ) {
       event.preventDefault();
       this.click();
     }

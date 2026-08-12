@@ -10,9 +10,6 @@
 /* =========================
    HERO SECTION
 ========================= */
-.hero-background {
-  padding: 60px 0;
-}
 
 /* The 50/50 split itself is set in common.css. All the home page does is
    pick the gap between the two halves. */
@@ -28,6 +25,11 @@
 .work-with {
   padding: 70px 0;
   background: var(--white);
+}
+
+.work-with-section p {
+  text-align: center;
+  margin-top: 60px;
 }
 
 /* Heading */
@@ -81,6 +83,14 @@
 .services-section {
   padding: 70px 0;
   background: #f6f7fa;
+}
+
+.what-we-do-section {
+  display: flex;
+}
+
+.what-we-do-section img {
+  margin-top: -22px;
 }
 
 /* Section Header */
@@ -150,11 +160,16 @@
 
 .card-content ul {
   padding: 0px;
-  margin: 10px 0 20px;
+  margin: 0px 0 20px;
 }
 
 .card-content ul li {
   list-style: none;
+}
+
+.card-2 i {
+  color: var(--darkblue);
+  margin-right: 8px;
 }
 
 /* pushes the "Learn more" button to the bottom of whichever card it is in */
@@ -425,7 +440,11 @@
 
 .why-item {
   display: flex;
-  gap: 18px;
+  gap: 14px;
+}
+
+.why-item h4 {
+  color: var(--white);
 }
 
 /* ==========================================
@@ -438,9 +457,11 @@
 }
 
 .cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 760px;
   margin: 0 auto;
-  text-align: center;
 }
 
 /* Description */
@@ -473,6 +494,10 @@
     margin-bottom: 40px;
   }
 
+  .point2 {
+    margin-left: 31px;
+  }
+
   .work-grid {
     gap: 18px;
   }
@@ -484,6 +509,11 @@
   .work-card i {
     font-size: 24px;
     margin-bottom: 14px;
+  }
+
+  .why-item {
+    align-items: start;
+    gap: 14px;
   }
 
   .services-grid {
@@ -506,8 +536,9 @@
   }
 
   .problem-item {
+    align-items: center;
     padding: 14px 16px;
-    gap: 10px;
+    gap: 14px;
   }
 
   .solution-card {
@@ -555,6 +586,11 @@
     900px and below - still the same columns, tighter again
    ============================================================ */
 @media (max-width: 900px) {
+  .certified-quality {
+    bottom: -83px;
+    padding: 12px 6px;
+  }
+
   .services-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -562,8 +598,21 @@
     align-items: stretch;
   }
 
+  .point2 {
+    margin-left: 0px;
+  }
+
   .timeline {
     gap: 14px;
+  }
+
+  .work-card p {
+    align-items: center;
+  }
+
+  .work-card i {
+    align-items: center;
+    margin: 0px;
   }
 
   .work-grid {
@@ -572,11 +621,19 @@
   }
 
   .work-card {
+    display: flex;
+    gap: 14px;
     padding: 20px 14px;
+    align-items: center;
   }
 
   .card-content {
     padding: 16px;
+  }
+
+  .cards {
+    margin-top: 60px;
+    margin-bottom: -20px;
   }
 
   .service-card img {
@@ -619,6 +676,10 @@
   .why-fire-clear,
   .cta-section {
     padding: 45px 0;
+  }
+
+  .point2 {
+    margin-left: 0px;
   }
 
   /* ---- Who We Work With ---- */
@@ -712,8 +773,31 @@
    425px and below - small phones
    ============================================================ */
 @media (max-width: 425px) {
+  .certified-quality {
+    bottom: -64px;
+    padding: 8px 6px;
+    left: 119px;
+  }
+
   .work-card {
+    display: flex;
+    align-items: center;
     padding: 22px 18px;
+  }
+
+  .work-card i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+  }
+
+  .timeline-item p {
+    margin: 12px 61px 0px;
+  }
+
+  .cta-content p {
+    text-align: center;
   }
 
   .card-content {
@@ -722,6 +806,10 @@
 
   .service-card img {
     height: 170px;
+  }
+
+  .competence {
+    margin-left: 4px;
   }
 
   .problem-item {

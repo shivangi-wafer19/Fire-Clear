@@ -3,51 +3,74 @@
   Loads external HTML components into elements with data-include attribute
 
   Usage:
-  <div data-include="components/header.html"></div>
+  <div data-include="header.html"></div>
 */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const includes = document.querySelectorAll("[data-include]");
 
-  includes.forEach(async (el) => {
-    const file = el.getAttribute("data-include");
+  // Cache prevents the same HTML file from being fetched more than once.
+  const cache = new Map();
 
-    try {
-      const response = await fetch(file);
+  try {
+    await Promise.all(
+      [...includes].map(async (el) => {
+        const file = el.getAttribute("data-include");
 
-      // Check if file loaded correctly
-      if (!response.ok) {
-        throw new Error(`Could not load ${file}`);
-      }
+        try {
+          // Use cached HTML if this file has already been fetched.
+          if (!cache.has(file)) {
+            const response = await fetch(file);
 
-      const content = await response.text();
-      el.innerHTML = content;
+            // Check if the file loaded correctly.
+            if (!response.ok) {
+              throw new Error(`Could not load ${file}`);
+            }
 
-      // Keep the footer's copyright year current automatically
-      const yearEl = document.getElementById("copyright-year");
-      if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
-      }
+            const content = await response.text();
+            cache.set(file, content);
+          }
 
-      // Once the header (or any include containing nav links) is in
-      // the page, mark whichever link matches the current URL as active.
-      setActiveNavLink();
-    } catch (error) {
-      console.error("Include error:", error);
-      el.innerHTML = "<!-- Component failed to load -->";
+          // Insert the cached HTML into the element.
+          el.innerHTML = cache.get(file);
+        } catch (error) {
+          console.error("Include error:", error);
+          el.innerHTML = "<!-- Component failed to load -->";
+        }
+      }),
+    );
+
+    // Update the copyright year after all components are loaded.
+    const yearEl = document.getElementById("copyright-year");
+
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
     }
-  });
+
+    // Run navigation highlighting only once after all includes are loaded.
+    setActiveNavLink();
+  } catch (error) {
+    console.error("Include system error:", error);
+  }
 });
 
 /* =========================
    ACTIVE NAV LINK
 ========================= */
-// Highlights the nav link that matches the page currently open.
+
+// Highlights the nav link that matches the current page.
 function setActiveNavLink() {
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
   document.querySelectorAll(".nav-link").forEach(function (link) {
-    const linkPage = link.getAttribute("href").split("/").pop();
+    const href = link.getAttribute("href");
+
+    // Ignore links without an href.
+    if (!href) {
+      return;
+    }
+
+    const linkPage = href.split("/").pop();
 
     if (linkPage === currentPage) {
       link.classList.add("active");
@@ -57,9 +80,9 @@ function setActiveNavLink() {
   });
 }
 
-/* =========================
-   NOTE: The former "ROLE SECTION" hover-highlight block targeting
-   .role-item has been removed. No page uses that class — the real
-   cards are .role-card on fire-safety-management.html, which already
-   has an equivalent :hover effect defined in CSS. This block never ran.
-========================= */
+/*
+  NOTE:
+  The former ".role-item" hover-highlight block has been removed.
+  No page uses that class. The actual cards use ".role-card",
+  which already has the required hover effect in CSS.
+*/

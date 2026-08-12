@@ -12,15 +12,19 @@
    INTRO SECTION
 ========================= */
 
-.intro-section {
+.introduction-section {
   background: var(--white);
   padding: 70px 0;
+}
+
+.intro-item {
+  display: flex;
+  align-items: center;
 }
 
 .intro-item i {
   color: var(--red);
   font-size: 23px;
-  margin-right: 8px;
 }
 
 /* Layout - two equal columns, side by side on desktop and tablet */
@@ -52,7 +56,7 @@
   border-radius: 6px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   border: 1px solid #d8dce5;
 }
 
@@ -184,12 +188,12 @@
 }
 
 .determine-col h4 {
-  text-align: left !important;
+  text-align: left;
 }
 
 .principle-6 {
   margin-bottom: 20px;
-  text-align: left !important;
+  text-align: left;
 }
 
 /* =========================
@@ -199,6 +203,16 @@
 .pblock-section {
   padding: 37px 0px;
   background: var(--white);
+}
+
+.determine-section h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.determine-section p {
+  text-align: center;
 }
 
 /* Alternate background */
@@ -226,7 +240,7 @@
 }
 
 .pblock-content p {
-  text-align: left !important;
+  text-align: left;
 }
 
 .pblock-media {
@@ -270,6 +284,24 @@
   border-bottom: 1px solid #d9e2ef;
 }
 
+.cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.get-started {
+  margin-bottom: 30px;
+}
+
+.cta-content h2 {
+  margin-bottom: 20px;
+}
+
+.cta-content p {
+  margin-bottom: 30px;
+}
+
 /* Description */
 /* ============================================================
    RESPONSIVE LAYERS
@@ -284,7 +316,7 @@
     1024px and below - tablet / small laptop
    ============================================================ */
 @media (max-width: 1024px) {
-  .intro-section {
+  .introduction-section {
     padding: 55px 0;
   }
 
@@ -294,6 +326,7 @@
 
   .intro-item {
     padding: 12px 14px;
+    gap: 14px;
   }
 
   .pblock-section {
@@ -320,7 +353,20 @@
    900px and below - same columns, tighter again
    ============================================================ */
 @media (max-width: 900px) {
-  .intro-section {
+  .btn-primary {
+    width: 300px;
+    padding: 11px 3px;
+  }
+  .btn-primary a {
+    font-size: 14px;
+  }
+
+  .certified-quality {
+    bottom: -59px;
+    padding: 13px 7px;
+  }
+
+  .introduction-section {
     padding: 45px 0;
   }
 
@@ -348,7 +394,7 @@
     767px and below - phones: one column everywhere
    ============================================================ */
 @media (max-width: 767px) {
-  .intro-section {
+  .introduction-section {
     padding: 45px 0;
   }
 
@@ -399,7 +445,7 @@
     display: none;
   }
 
-  .intro-section {
+  .introduction-section {
     padding: 40px 0;
   }
 
