@@ -609,6 +609,10 @@
     left: 119px;
   }
 
+  .steps-wrapper {
+    padding-left: 0px;
+  }
+
   .list-icon {
     align-items: center;
   }
