@@ -93,7 +93,7 @@
 /* Tablet / laptop - cards stay three across, just tighter */
 @media (max-width: 1024px) {
   .contact-cards-section {
-    padding: 55px 0;
+    padding: 40px 0;
   }
 
   .contact-grid {
@@ -152,6 +152,14 @@
 
   .badge-item {
     text-align: center;
+  }
+
+  .contact-hero-wrapper h1 {
+    text-align: center;
+  }
+
+  .cta-bar-inner {
+    gap: 10px;
   }
 }
 
@@ -258,7 +266,7 @@
   .btn {
     display: block;
     width: 100%;
-    margin: 5px 0;
+    margin: 15px 0;
     text-align: center;
   }
 

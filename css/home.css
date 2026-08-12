@@ -27,14 +27,19 @@
   background: var(--white);
 }
 
-.work-with-section p {
-  margin-top: 60px;
-}
-
 /* Heading */
 .section-heading {
   text-align: center;
   margin-bottom: 50px;
+}
+
+.work-with-section {
+  margin-top: 10px 100px 0px;
+}
+
+.cards {
+  margin: 60px 60px -20px !important;
+  text-align: center !important;
 }
 
 /* Cards - four across, and they stay four across all the way down to a
@@ -256,7 +261,7 @@
   background: var(--darkblue);
   color: #ffffff;
   border-radius: 20px;
-  padding: 34px 40px;
+  padding: 35px 40px;
   margin-top: 100px;
   position: relative;
   overflow: hidden;
@@ -301,7 +306,7 @@
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  margin-bottom: 22px;
+  margin-bottom: 12px;
 }
 
 .solution-card li:last-child {
@@ -480,13 +485,17 @@
     keep every row on one line.
    ============================================================ */
 @media (max-width: 1024px) {
+  .container {
+    padding-inline: 30px;
+  }
+
   .work-with,
   .services-section,
   .problem-section,
   .approach-section,
   .why-fire-clear,
   .cta-section {
-    padding: 55px 0;
+    padding: 40px 0;
   }
 
   .section-heading {
@@ -508,6 +517,10 @@
   .work-card i {
     font-size: 24px;
     margin-bottom: 14px;
+  }
+
+  .why-content h2 {
+    text-align: center;
   }
 
   .why-item {
@@ -541,7 +554,7 @@
   }
 
   .solution-card {
-    padding: 28px 26px;
+    padding: 40px 26px;
     margin-top: 102px;
   }
 
@@ -579,12 +592,21 @@
   .why-item i {
     font-size: 24px;
   }
+
+  .cta-content p,
+  .cta-content h2 {
+    text-align: center;
+  }
 }
 
 /* ============================================================
     900px and below - still the same columns, tighter again
    ============================================================ */
 @media (max-width: 900px) {
+  .container {
+    padding-inline: 30px;
+  }
+
   .certified-quality {
     bottom: -83px;
     padding: 12px 6px;
@@ -595,6 +617,10 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     align-items: stretch;
+  }
+
+  .why-content h2 {
+    text-align: center;
   }
 
   .point2 {
@@ -633,6 +659,7 @@
   .cards {
     margin-top: 60px;
     margin-bottom: -20px;
+    text-align: center !important;
   }
 
   .service-card img {
@@ -652,7 +679,7 @@
 
   .solution-card {
     margin-top: 0;
-    padding: 28px 24px;
+    padding: 40px 24px;
   }
 
   .why-grid {
@@ -661,6 +688,11 @@
 
   .approach-img {
     width: 100%;
+  }
+
+  .cta-content p,
+  .cta-content h2 {
+    text-align: center;
   }
 }
 
@@ -674,7 +706,7 @@
   .approach-section,
   .why-fire-clear,
   .cta-section {
-    padding: 45px 0;
+    padding: 20px 0;
   }
 
   .point2 {
@@ -727,7 +759,7 @@
 
   .solution-card {
     margin-top: 0;
-    padding: 28px 24px;
+    padding: 40px 24px;
   }
 
   .problem-item {
@@ -772,10 +804,34 @@
    425px and below - small phones
    ============================================================ */
 @media (max-width: 425px) {
+  .container {
+    padding-inline: 20px;
+  }
+
+  .section-heading {
+    margin-bottom: 20px;
+  }
+
+  .section-heading h2 {
+    text-align: center;
+  }
+
+  .top-section h2 {
+    text-align: center;
+  }
+
+  .why-content h2 {
+    text-align: left;
+  }
+
+  .cards {
+    margin: 21px 0px -20px !important;
+  }
+
   .certified-quality {
-    bottom: -64px;
+    bottom: -73px;
     padding: 8px 6px;
-    left: 119px;
+    left: 115px;
   }
 
   .work-card {
@@ -795,7 +851,8 @@
     margin: 12px 61px 0px;
   }
 
-  .cta-content p {
+  .cta-content p,
+  .cta-content h2 {
     text-align: center;
   }
 
@@ -807,16 +864,12 @@
     height: 170px;
   }
 
-  .competence {
-    margin-left: 4px;
-  }
-
   .problem-item {
     padding: 14px 16px;
   }
 
   .solution-card {
-    padding: 24px 20px;
+    padding: 40px 20px;
   }
 
   /* ---- Share icons ---- */

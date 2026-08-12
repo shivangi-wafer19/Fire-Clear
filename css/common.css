@@ -329,7 +329,6 @@ button:focus-visible,
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-  margin: 20px 0px;
   color: var(--text-color);
 }
 
@@ -439,8 +438,7 @@ img {
 
 /* Both hero button rows behave the same way: sit side by side while there
    is room, wrap onto a second line when there isn't. */
-.button-section,
-.hero-buttons {
+.button-section {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
@@ -732,7 +730,7 @@ img {
   }
 
   .small-section-title {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 25px;
   }
 
@@ -784,6 +782,10 @@ img {
 @media (max-width: 425px) {
   .container {
     padding-inline: 16px;
+  }
+
+  .hero-background {
+    padding: 40px 0px 60px;
   }
 
   .hero-background::after {

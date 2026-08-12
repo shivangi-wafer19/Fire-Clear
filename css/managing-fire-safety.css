@@ -201,7 +201,7 @@
 ========================= */
 
 .pblock-section {
-  padding: 37px 0px;
+  padding: 40px 0px;
   background: var(--white);
 }
 
@@ -290,16 +290,12 @@
   align-items: center;
 }
 
-.get-started {
-  margin-bottom: 30px;
-}
-
 .cta-content h2 {
   margin-bottom: 20px;
 }
 
 .cta-content p {
-  margin-bottom: 30px;
+  margin: 0px 74px 10px;
 }
 
 /* Description */
@@ -316,8 +312,12 @@
     1024px and below - tablet / small laptop
    ============================================================ */
 @media (max-width: 1024px) {
+  .container {
+    padding-inline: 30px;
+  }
+
   .introduction-section {
-    padding: 55px 0;
+    padding: 40px 0;
   }
 
   .intro-wrapper {
@@ -330,7 +330,7 @@
   }
 
   .pblock-section {
-    padding: 30px 0;
+    padding: 40px 0;
   }
 
   .pblock-row {
@@ -347,12 +347,24 @@
     padding: 10px;
     margin-top: 16px;
   }
+
+  .cta-content p {
+    margin: 0px 74px 10px;
+  }
 }
 
 /* ============================================================
    900px and below - same columns, tighter again
    ============================================================ */
 @media (max-width: 900px) {
+  .container {
+    padding-inline: 30px;
+  }
+
+  .intro-left h2 {
+    text-align: left;
+  }
+
   .btn-primary {
     width: 300px;
     padding: 11px 3px;
@@ -439,14 +451,21 @@
     425px and below - small phones
    ============================================================ */
 @media (max-width: 425px) {
+  .container {
+    padding-inline: 20px;
+  }
   /* the badge overlaps the hero photo too heavily to stay readable at
      this width */
   .certified-quality {
     display: none;
   }
 
+  .hero-background {
+    padding: 40px 0px 20px;
+  }
+
   .introduction-section {
-    padding: 40px 0;
+    padding: 20px 0;
   }
 
   .intro-item {
@@ -464,6 +483,16 @@
 
   .accent-text {
     font-size: 14px;
+  }
+
+  .cta-content p,
+  .cta-content h2 {
+    text-align: center;
+    margin: 10px;
+  }
+
+  .btn-cta {
+    margin-top: 20px;
   }
 
   .pblock-row,

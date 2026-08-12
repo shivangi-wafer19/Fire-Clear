@@ -30,7 +30,7 @@
    are allowed to differ)
 ========================= */
 
-.hero-text .btn-group .btn {
+.hero-text .cta-content .btn {
   box-sizing: border-box;
   padding: 14px 20px;
   border: 2px solid transparent;
@@ -41,11 +41,11 @@
   box-shadow: none;
 }
 
-.hero-text .btn-group .btn-primary {
+.hero-text .cta-content .btn-primary {
   border-color: var(--darkblue);
 }
 
-.hero-text .btn-group .btn-secondary {
+.hero-text .cta-content .btn-secondary {
   border-color: var(--red);
 }
 
@@ -747,6 +747,10 @@ training-card-header .icon {
   margin-bottom: 20px;
 }
 
+.integration-heading p {
+  margin: 0px;
+}
+
 /* =========================
    LAYOUT
 ========================= */
@@ -865,37 +869,14 @@ training-card-header .icon {
 }
 
 /* =========================
-   CONTACT CTA
+   CTA SECTION
 ========================= */
 
-.discussion-section {
-  padding: 60px 0;
+.cta-section {
   background: var(--background);
-}
-
-.discussion-content {
-  align-items: center;
-  max-width: 700px;
-  margin: auto;
-}
-
-.discussion-content .tag-label {
-  display: inline-block;
-  margin-bottom: 14px;
-}
-
-.discussion-content .section-subtitle {
-  max-width: 620px;
-  margin: 0 auto 30px;
-  line-height: 1.8;
-}
-
-/* Buttons */
-.btn-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
+  padding: 40px 0 90px 0;
+  border-bottom: 1px solid #d9e2ef;
 }
 
 .hero-buttons {
@@ -904,18 +885,20 @@ training-card-header .icon {
   align-items: center;
 }
 
-.discussion-content .btn-group {
-  justify-content: center;
+.cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.discussion-content .btn {
-  transition: all 0.3s ease;
+.cta-content h2 {
+  margin-bottom: 20px;
 }
 
-.discussion-content .red-btn:hover {
-  background: var(--darkblue);
-  transform: translateY(-3px);
+.cta-content p {
+  margin: 0px 74px 10px;
 }
+
 /* ==========================================================================
    RESPONSIVE LAYERS
 
@@ -930,6 +913,10 @@ training-card-header .icon {
     LAPTOP / LARGE TABLET -- max-width: 1024px
    ========================================================================== */
 @media (max-width: 1024px) {
+  .container {
+    padding-inline: 30px;
+  }
+
   .hero-background,
   .overview-section,
   .requirement-section,
@@ -937,9 +924,8 @@ training-card-header .icon {
   .risk-section,
   .governance-section,
   .training-section,
-  .integration-section,
-  .discussion-section {
-    padding: 55px 0;
+  .integration-section {
+    padding: 40px 0;
   }
 
   .process-wrapper,
@@ -971,20 +957,27 @@ training-card-header .icon {
   .integration-heading {
     margin-bottom: 35px;
   }
+
+  .cta-content p {
+    margin: 15px 74px 20px;
+  }
 }
 
 /* ==========================================================================
    -- max-width: 900px, same columns, tighter again
    ========================================================================== */
 @media (max-width: 900px) {
+  .container {
+    padding-inline: 30px;
+  }
+
   .hero-background,
   .overview-section,
   .requirement-section,
   .process-section,
   .risk-section,
   .governance-section,
-  .integration-section,
-  .discussion-section {
+  .integration-section {
     padding: 24px 0;
   }
 
@@ -1032,8 +1025,8 @@ training-card-header .icon {
     top: 24px;
   }
 
-  .btn-group p {
-    margin: 18px 19px;
+  .cta-content p {
+    margin: 0px 74px 20px;
   }
 }
 
@@ -1052,8 +1045,7 @@ training-card-header .icon {
   .risk-section,
   .governance-section,
   .training-section,
-  .integration-section,
-  .discussion-section {
+  .integration-section {
     padding: 45px 0;
   }
 
@@ -1086,18 +1078,6 @@ training-card-header .icon {
   }
 
   /* full-width tap targets */
-  .btn-group,
-  .hero-buttons {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .btn-group .btn,
-  .btn-primary,
-  .btn-secondary {
-    width: 100%;
-    text-align: center;
-  }
 
   /* the lift-on-hover effects are pointless on touch and leave cards
      stuck in their hovered state after a tap */
@@ -1131,8 +1111,34 @@ training-card-header .icon {
    SMALL MOBILE -- max-width: 425px
    ========================================================================== */
 @media (max-width: 425px) {
+  .container {
+    padding-inline: 20px;
+  }
+
+  .hero-buttons {
+    margin-right: 28px;
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+
   .training-list li {
     padding: 14px 10px;
+  }
+
+  .training-main-section {
+    text-align: left;
+  }
+
+  .btn-cta {
+    margin-top: 15px;
+  }
+
+  .cta-content p,
+  .cta-content h2 {
+    text-align: center;
+    margin: 8px 15px;
   }
 
   /* these rows put their trailing "+" icon on its own line rather than
@@ -1144,9 +1150,26 @@ training-card-header .icon {
     gap: 8px;
   }
 
+  .hero-description {
+    margin: 11px 0px;
+  }
+
   .governance-item {
     display: flex;
     gap: 14px;
+  }
+
+  .integration-heading {
+    margin-bottom: 20px;
+  }
+
+  .integration-heading h2 {
+    text-align: left;
+  }
+
+  .integration-heading p {
+    text-align: left;
+    margin: 0px;
   }
 
   .integration-item i {
@@ -1188,8 +1211,7 @@ training-card-header .icon {
   .risk-section,
   .governance-section,
   .training-section,
-  .integration-section,
-  .discussion-section {
-    padding: 38px 0;
+  .integration-section {
+    padding: 20px 0;
   }
 }
