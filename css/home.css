@@ -477,6 +477,15 @@
   line-height: 1.7;
 }
 
+.cta-content p,
+.cta-content h2 {
+  text-align: center;
+}
+
+.cta-content p {
+  margin: 20px auto;
+}
+
 /* ============================================================
     1024px and below - tablet / small laptop
 

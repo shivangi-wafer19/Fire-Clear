@@ -895,6 +895,11 @@ training-card-header .icon {
   margin: 20px auto;
 }
 
+.cta-content p,
+.cta-content h2 {
+  text-align: center;
+}
+
 /* ==========================================================================
    RESPONSIVE LAYERS
 
