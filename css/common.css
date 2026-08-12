@@ -443,6 +443,7 @@ img {
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 20px;
+  align-items: flex-start;
 }
 
 /* the gap above already does the spacing, so drop the button's own margin */
@@ -453,6 +454,8 @@ img {
 
 /* Primary Button (Outline Red) */
 .btn-primary {
+  width: fit-content;
+  flex: 0 0 auto;
   border: 1px solid transparent;
   padding: 11px 20px;
   border-radius: 6px;
