@@ -658,6 +658,10 @@ img {
    down another step for it to stay comfortable
    ============================================================ */
 @media (max-width: 900px) {
+  .hero-background {
+    padding: 0px 0px 60px;
+  }
+
   .hero-title {
     font-size: 30px;
     line-height: 36px;

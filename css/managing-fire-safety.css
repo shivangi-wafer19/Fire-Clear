@@ -408,12 +408,22 @@
   }
 }
 
+@media (max-width: 768px) {
+  .hero-background {
+    padding: 0px 0px 60px !important;
+  }
+}
+
 /* ============================================================
     767px and below - phones: one column everywhere
    ============================================================ */
 @media (max-width: 767px) {
   .introduction-section {
     padding: 45px 0;
+  }
+
+  .hero-background {
+    padding: 0px 0px 60px !important;
   }
 
   /* ---- Introduction: heading on top, list underneath ---- */
