@@ -69,8 +69,7 @@ HEADER
 
 /* Logo */
 .logo {
-  font-family:
-    "Noto Sans", sans-serif; /* Glacial Indifference is not available via Google Fonts - using Noto Sans as the closest loaded substitute until a licensed font file is added */
+  margin-top: -16px;
 }
 
 /* Nav */
@@ -116,7 +115,6 @@ HEADER
   background: var(--darkblue);
   color: var(--white);
   padding: 13px 14px;
-  margin-right: 20px;
   border-radius: 6px;
   text-decoration: none;
   transition: 0.3s;
@@ -158,7 +156,7 @@ FOOTER
 }
 
 .footer-col p {
-  margin-top: 9%;
+  margin-top: 3%;
 }
 
 .footer-col ul {
@@ -308,6 +306,10 @@ FOOTER
   .footer-Policy {
     font-size: 12px;
   }
+
+  .nav-list a {
+    padding: 10px 20px;
+  }
 }
 
 /* ==========================================
@@ -356,11 +358,11 @@ FOOTER
 ================================================== */
 @media (max-width: 1024px) {
   .header-container {
-    padding: 15px 0;
+    padding: 25px 33px !important;
   }
 
   .footer-col p {
-    margin-top: 13%;
+    margin-top: 7%;
   }
 }
 /* ==================================================
@@ -370,6 +372,10 @@ FOOTER
   /* show hamburger, hide the inline desktop nav */
   .menu-toggle {
     display: flex;
+  }
+
+  .header-container {
+    padding: 15px 32px !important;
   }
 
   .nav {
@@ -419,7 +425,12 @@ FOOTER
     grid-template-columns: repeat(4, 1fr);
   }
   .footer-col p {
-    margin-top: 21%;
+    margin-top: 9%;
+  }
+
+  .logo img {
+    max-width: 80% !important;
+    margin-top: 12px;
   }
 }
 
@@ -429,6 +440,10 @@ FOOTER
 @media (max-width: 640px) {
   body {
     padding-top: 75px;
+  }
+
+  .header-container {
+    padding: 4px 12px !important;
   }
 
   .logo {
@@ -443,7 +458,7 @@ FOOTER
   }
 
   .nav-list a {
-    padding: 20px; /* bigger tap target for touch */
-    font-size: 17px;
+    padding: 10px 20px; /* bigger tap target for touch */
+    font-size: 16px;
   }
 }
